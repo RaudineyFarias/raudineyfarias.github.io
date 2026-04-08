@@ -1,1120 +1,1095 @@
-<!doctype html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Raudiney Farias — Financeiro • Compras • Dados</title>
-  <meta name="description" content="Portfólio minimalista com foco em Compras, Financeiro, Processos e Análise de Dados. Tecnologia como diferencial." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raudiney Farias</title>
+</head>
+<style>
+  :root{
+    --navy-950:#08101C;
+    --navy-900:#0D1726;
+    --navy-850:#101D30;
+    --navy-800:#14243A;
+    --navy-700:#1C3454;
+    --navy-600:#274A78;
+    --blue-500:#2F6BFF;
+    --blue-400:#5B8CFF;
+    --blue-300:#8DB4FF;
+    --ice-100:#EAF2FF;
+    --ice-200:#D8E5FF;
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Raudiney Farias — Financeiro • Compras • Dados" />
-  <meta property="og:description" content="Compras e rotina financeira com visão de processo e indicadores — automação como diferencial." />
-  <meta property="og:type" content="website" />
+    --bg:#F4F7FB;
+    --bg-soft:#EDF3FB;
+    --card:#FFFFFF;
+    --card-2:#F9FBFF;
+    --text:#0F172A;
+    --muted:#5B6B81;
+    --line:#D6E0EE;
+    --line-strong:#C4D3E6;
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    --accent:var(--blue-500);
+    --accent-2:var(--blue-400);
+    --accent-soft:rgba(47,107,255,.10);
 
-  <style>
-    :root{
-      --green-900:#0E3B2E;
-      --green-800:#0B2E24;
-      --green-100:#E7F0EC;
-      --bg:#F7F8F6;
-      --card:#FFFFFF;
-      --text:#1F2933;
-      --muted:#54616E;
-      --line:#D1D5DB;
-      --gold:#B8A46A; /* sutil */
-      --shadow: 0 10px 30px rgba(17,24,39,.08);
-      --radius: 16px;
-      --radius-sm: 12px;
-      --container: 1120px;
-      --pad: 22px;
-      --focus: 0 0 0 4px rgba(14,59,46,.15);
-    }
+    --shadow-sm:0 8px 20px rgba(15,23,42,.06);
+    --shadow:0 18px 45px rgba(15,23,42,.08);
+    --shadow-lg:0 24px 70px rgba(8,16,28,.12);
 
-    [data-theme="dark"]{
-      --bg:#0B1210;
-      --card:#0F1A16;
-      --text:#E6EEE9;
-      --muted:#A9B7B0;
-      --line:#22352F;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --green-100:#0F211B;
-    }
+    --radius:18px;
+    --radius-sm:14px;
+    --radius-xs:12px;
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.55;
-    }
-    a{ color:inherit; text-decoration:none; }
-    .container{ max-width:var(--container); margin:0 auto; padding: 0 18px; }
+    --container:1120px;
+    --pad:22px;
 
-    header{
-      position:sticky; top:0; z-index:100;
-      backdrop-filter: blur(10px);
-      background: color-mix(in srgb, var(--bg) 72%, transparent);
-      border-bottom: 1px solid color-mix(in srgb, var(--line) 50%, transparent);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0; gap: 14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width: 260px;
-    }
-    .mark{
-      width:38px; height:38px; border-radius: 12px;
-      background: radial-gradient(120% 120% at 30% 25%, color-mix(in srgb, var(--green-900) 70%, #ffffff 30%) 0%, var(--green-900) 60%, var(--green-800) 100%);
-      box-shadow: 0 10px 18px rgba(14,59,46,.18);
-      position:relative; overflow:hidden; flex: 0 0 auto;
-    }
-    .mark::after{
-      content:""; position:absolute; inset:-40% -40%;
-      background: linear-gradient(135deg, rgba(184,164,106,.22), transparent 55%);
-      transform: rotate(10deg);
-    }
-    .brand strong{
-      font-weight: 650; letter-spacing: -0.02em;
-      display:block; font-size: 14px; line-height: 1.2;
-    }
-    .brand span{ display:block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+    --focus:0 0 0 4px rgba(47,107,255,.14);
+  }
 
-    .menu{
-      display:flex; align-items:center; gap: 10px;
-      flex-wrap: wrap; justify-content:flex-end;
-    }
-    .menu a{
-      font-size: 13px; color: var(--muted);
-      padding: 8px 10px; border-radius: 10px;
-      transition: background .18s ease, color .18s ease;
-    }
-    .menu a:hover{
-      background: color-mix(in srgb, var(--green-100) 70%, transparent);
-      color: var(--text);
-    }
-    .actions{ display:flex; align-items:center; gap: 10px; }
+  [data-theme="dark"]{
+    --bg:#0A101A;
+    --bg-soft:#0D1522;
+    --card:#101826;
+    --card-2:#131E30;
+    --text:#EAF1FB;
+    --muted:#98A8BE;
+    --line:#22324A;
+    --line-strong:#2C4160;
 
-    .btn{
-      border: 1px solid var(--line);
-      background: transparent;
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-size: 13px;
-      color: var(--text);
-      transition: transform .12s ease, background .18s ease, border-color .18s ease;
-      display:inline-flex; align-items:center; gap: 10px;
-      cursor:pointer; user-select:none;
-    }
-    .btn:focus{ outline:none; box-shadow: var(--focus); }
-    .btn:hover{
-      background: color-mix(in srgb, var(--green-100) 65%, transparent);
-      border-color: color-mix(in srgb, var(--green-900) 20%, var(--line));
-    }
-    .btn.primary{
-      background: var(--green-900);
-      border-color: var(--green-900);
-      color: #fff;
-    }
-    .btn.primary:hover{
-      background: color-mix(in srgb, var(--green-900) 88%, #000 12%);
-      transform: translateY(-1px);
-    }
-    .btn.ghost{
-      border-color: transparent;
-      background: transparent;
-      color: var(--muted);
-    }
-    .btn.ghost:hover{
-      border-color: var(--line);
-      background: color-mix(in srgb, var(--green-100) 55%, transparent);
-      color: var(--text);
-    }
-    .icon{ width:16px;height:16px;display:inline-block;flex:0 0 auto; }
+    --shadow-sm:0 10px 22px rgba(0,0,0,.22);
+    --shadow:0 18px 50px rgba(0,0,0,.28);
+    --shadow-lg:0 28px 80px rgba(0,0,0,.38);
+    --accent-soft:rgba(91,140,255,.14);
+  }
 
-    .hero{ padding: 48px 0 30px; }
-    .hero-grid{
-      display:grid; grid-template-columns: 1.25fr .75fr; gap: 22px; align-items:stretch;
-    }
-    .hero-card{
-      background: var(--card);
-      border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: clamp(18px, 2.5vw, 28px);
-      position:relative; overflow:hidden;
-    }
-    .hero-card::before{
-      content:""; position:absolute; inset:-60% -60%;
-      background:
-        radial-gradient(40% 40% at 30% 30%, rgba(14,59,46,.16), transparent 60%),
-        radial-gradient(40% 40% at 70% 40%, rgba(184,164,106,.12), transparent 60%),
-        radial-gradient(60% 60% at 50% 70%, rgba(14,59,46,.10), transparent 65%);
-      transform: rotate(-7deg);
-      pointer-events:none;
-    }
-    .hero-content{ position:relative; }
-    .kicker{
-      display:inline-flex; align-items:center; gap: 10px;
-      padding: 8px 12px; border-radius: 999px;
-      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-      background: color-mix(in srgb, var(--green-100) 55%, transparent);
-      color: var(--muted); font-size: 12px;
-    }
-    .dot{
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(184,164,106,.12);
-    }
-    h1{
-      font-size: clamp(26px, 3.2vw, 44px);
-      line-height: 1.06;
-      margin: 14px 0 10px;
-      letter-spacing: -0.04em;
-    }
-    .sub{
-      color: var(--muted);
-      margin: 0 0 16px;
-      font-size: 15px;
-      max-width: 70ch;
-    }
-    .hero-cta{
-      display:flex; gap: 12px; align-items:center; flex-wrap:wrap; margin-top: 18px;
-    }
-    .meta{
-      display:flex; gap: 14px; margin-top: 18px; flex-wrap:wrap;
-      color: var(--muted); font-size: 12px;
-    }
-    .meta .pill{
-      display:inline-flex; align-items:center; gap: 8px;
-      padding: 8px 10px; border-radius: 999px;
-      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-      background: color-mix(in srgb, var(--bg) 70%, transparent);
-    }
-    .mono{ font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
 
-    .metrics{ display:flex; flex-direction:column; gap: 14px; height:100%; }
-    .metric-card{
-      background: var(--card);
-      border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      position:relative; overflow:hidden;
-    }
-    .metric-card .title{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 10px; margin-bottom: 12px;
-    }
-    .metric-card .title strong{
-      font-size: 13px; color: var(--muted); font-weight: 600;
-      letter-spacing: .02em; text-transform: uppercase;
-    }
-    .metric{
-      display:grid; grid-template-columns: 1fr 1fr; gap: 12px;
-    }
-    .metric .box{
-      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-      border-radius: 14px;
-      padding: 12px;
-      background: color-mix(in srgb, var(--green-100) 40%, transparent);
-    }
-    .metric .num{
-      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
-      color: var(--green-900);
-    }
-    [data-theme="dark"] .metric .num { color: #BFE3D2; }
-    .metric .label{ margin-top: 6px; font-size: 12px; color: var(--muted); }
+  body{
+    margin:0;
+    background:
+      radial-gradient(1000px 500px at 15% -10%, rgba(91,140,255,.08), transparent 60%),
+      radial-gradient(900px 520px at 100% 0%, rgba(47,107,255,.06), transparent 50%),
+      linear-gradient(180deg, var(--bg), var(--bg-soft));
+    color:var(--text);
+    font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    line-height:1.55;
+  }
 
-    section{ padding: 26px 0; }
-    .section-head{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap: 16px; margin-bottom: 14px;
-    }
-    .section-head h2{ margin:0; font-size: 18px; letter-spacing: -0.02em; }
-    .section-head p{ margin:0; color: var(--muted); font-size: 13px; max-width: 72ch; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  button, input{ font:inherit; }
+  .container{ max-width:var(--container); margin:0 auto; padding:0 18px; }
 
-    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
-    .card{
-      background: var(--card);
-      border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: var(--pad);
-    }
-    .card.slim{ padding: 18px; }
+  /* ===== Header ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(14px);
+    background:color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom:1px solid color-mix(in srgb, var(--line) 78%, transparent);
+    box-shadow:0 6px 24px rgba(15,23,42,.04);
+  }
 
-    .col-12{ grid-column: span 12; }
-    .col-8{ grid-column: span 8; }
-    .col-7{ grid-column: span 7; }
-    .col-6{ grid-column: span 6; }
-    .col-5{ grid-column: span 5; }
-    .col-4{ grid-column: span 4; }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:10px 0;
+    min-height:64px;
+  }
 
-    .list{ display:flex; flex-direction:column; gap: 10px; }
-    .item{
-      display:flex; gap: 12px; align-items:flex-start;
-      padding: 12px; border-radius: 14px;
-      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-      background: color-mix(in srgb, var(--bg) 70%, transparent);
-    }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:240px;
+  }
 
-    .badge{
-      display:inline-flex; align-items:center; gap: 8px;
-      font-size: 12px; color: var(--muted);
-      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-      padding: 7px 10px; border-radius: 999px;
-      background: color-mix(in srgb, var(--green-100) 45%, transparent);
-      white-space:nowrap;
-    }
-    .item strong{
-      display:block; font-size: 14px; margin-bottom: 2px; letter-spacing:-0.01em;
-    }
-    .item p{ margin:0; color: var(--muted); font-size: 13px; }
+  .mark{
+    width:38px;
+    height:38px;
+    border-radius:14px;
+    position:relative;
+    overflow:hidden;
+    flex:0 0 auto;
+    background:
+      radial-gradient(120% 120% at 30% 20%, rgba(141,180,255,.55), transparent 38%),
+      linear-gradient(160deg, #183253 0%, #10233b 45%, #0a1525 100%);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.08),
+      0 10px 22px rgba(16,35,59,.22);
+  }
 
-    .tags{ display:flex; flex-wrap:wrap; gap: 8px; margin-top: 6px; }
-    .tag{
-      font-size: 11px; color: var(--muted);
-      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-      padding: 6px 9px; border-radius: 999px;
-      background: color-mix(in srgb, var(--card) 60%, transparent);
-    }
+  .mark::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(135deg, transparent 0 42%, rgba(91,140,255,.22) 58%, transparent 74%),
+      linear-gradient(180deg, transparent, rgba(255,255,255,.06));
+    mix-blend-mode:screen;
+  }
 
-    .project{
-      display:flex; flex-direction:column; gap: 10px;
-      padding: 16px; border-radius: var(--radius);
-      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-      background: linear-gradient(180deg, color-mix(in srgb, var(--green-100) 45%, transparent), transparent 70%);
-    }
-    .project .top{
-      display:flex; align-items:flex-start; justify-content:space-between; gap: 12px;
-    }
-    .project h3{ margin:0; font-size: 15px; letter-spacing:-0.02em; }
-    .project .desc{ margin:0; color: var(--muted); font-size: 13px; }
+  .mark::after{
+    content:"";
+    position:absolute;
+    width:18px;
+    height:18px;
+    right:-2px;
+    top:-2px;
+    border-radius:0 0 0 12px;
+    background:linear-gradient(180deg, rgba(141,180,255,.7), rgba(47,107,255,.2));
+    filter:blur(.3px);
+  }
 
-    .kv{
-      display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px;
-    }
-    .kv .k{
-      border: 1px dashed color-mix(in srgb, var(--line) 80%, transparent);
-      border-radius: 14px; padding: 10px;
-      background: color-mix(in srgb, var(--bg) 70%, transparent);
-    }
-    .kv .k .t{ font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-    .kv .k .v{ margin-top: 6px; font-size: 13px; color: var(--text); font-weight: 600; }
+  .brand strong{
+    display:block;
+    font-size:14px;
+    line-height:1.15;
+    letter-spacing:-0.02em;
+    font-weight:700;
+  }
 
-    /* Certificates */
-    .cert-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 12px;
-    }
-    .cert{
-      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-      border-radius: 14px;
-      padding: 12px;
-      background: color-mix(in srgb, var(--bg) 70%, transparent);
-      display:flex;
-      justify-content:space-between;
-      gap: 12px;
-    }
-    .cert .name{ font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
-    .cert .org{ font-size: 12px; color: var(--muted); margin-top: 3px; }
-    .cert .meta{
-      margin:0;
-      display:flex;
-      align-items:flex-start;
-      justify-content:flex-end;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 11px;
-      flex-wrap:wrap;
-    }
+  .brand span{
+    display:block;
+    margin-top:2px;
+    color:var(--muted);
+    font-size:12px;
+  }
 
-    /* Filters */
-    .toolbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap:wrap;
-      margin-bottom: 12px;
-    }
-    .search{
-      flex: 1 1 320px;
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-      border-radius: 14px;
-      padding: 10px 12px;
-      background: color-mix(in srgb, var(--card) 80%, transparent);
-    }
-    .search input{
-      border:0; outline:none; width:100%;
-      background:transparent; color:var(--text);
-      font-size: 13px;
-    }
-    .chiprow{
-      display:flex; gap: 8px; flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .chip{
-      border:1px solid color-mix(in srgb, var(--line) 75%, transparent);
-      padding: 8px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      color: var(--muted);
-      background: transparent;
-      cursor:pointer;
-      transition: background .18s ease, border-color .18s ease, color .18s ease;
-      user-select:none;
-    }
-    .chip:hover{
-      background: color-mix(in srgb, var(--green-100) 60%, transparent);
-      border-color: color-mix(in srgb, var(--green-900) 20%, var(--line));
-      color: var(--text);
-    }
-    .chip[aria-pressed="true"]{
-      background: color-mix(in srgb, var(--green-900) 12%, var(--green-100) 88%);
-      border-color: color-mix(in srgb, var(--green-900) 28%, var(--line));
-      color: var(--text);
-    }
+  .menu{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
 
-    footer{
-      padding: 26px 0 34px;
-      border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .footer-row{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px; flex-wrap:wrap;
-    }
+  .menu a{
+    font-size:12.5px;
+    color:var(--muted);
+    padding:8px 10px;
+    border-radius:10px;
+    transition:background .18s ease, color .18s ease, transform .15s ease;
+  }
 
-    @media (max-width: 980px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .brand{ min-width: unset; }
-    }
-    @media (max-width: 860px){
-      .col-6, .col-5, .col-7, .col-4, .col-8{ grid-column: span 12; }
-      .menu{ display:none; }
-      .metric{ grid-template-columns: 1fr 1fr; }
-      .cert-grid{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 480px){
-      .metric{ grid-template-columns: 1fr; }
-      .hero-cta{ flex-direction:column; align-items:stretch; }
-      .btn{ justify-content:center; }
-      .chiprow{ justify-content:flex-start; }
-    }
-    .hero-id{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom: 14px;
-}
+  .menu a:hover{
+    background:var(--accent-soft);
+    color:var(--text);
+    transform:translateY(-1px);
+  }
 
-.avatar{
-  width: 120px;
-  height: 120px;
-  border-radius: 18px; /* mais executivo que círculo */
-  object-fit: cover;
-  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-  box-shadow: 0 10px 24px rgba(17,24,39,.10);
-  background: color-mix(in srgb, var(--green-100) 50%, transparent);
-}
+  .actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
 
-.hero-name{
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  font-size: 14px;
-}
+  /* ===== Buttons ===== */
+  .btn{
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--text);
+    padding:9px 12px;
+    border-radius:12px;
+    font-size:13px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    cursor:pointer;
+    user-select:none;
+    transition:
+      transform .14s ease,
+      background .18s ease,
+      border-color .18s ease,
+      box-shadow .18s ease;
+  }
 
-.hero-role{
-  color: var(--muted);
-  font-size: 12px;
-  margin-top: 2px;
-}
+  .btn:focus,
+  .chip:focus,
+  .rf-tool-btn:focus,
+  .tool-input:focus,
+  .tool-select:focus{
+    outline:none;
+    box-shadow:var(--focus);
+  }
 
-/* Mobile: reduz */
-@media (max-width: 480px){
+  .btn:hover{
+    background:color-mix(in srgb, var(--accent-soft) 70%, transparent);
+    border-color:color-mix(in srgb, var(--accent) 20%, var(--line));
+    transform:translateY(-1px);
+  }
+
+  .btn.primary{
+    color:#fff;
+    border-color:transparent;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 18%, #fff), var(--accent));
+    box-shadow:0 12px 24px rgba(47,107,255,.22);
+  }
+
+  .btn.primary:hover{
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 28%, #fff), color-mix(in srgb, var(--accent) 90%, #000 10%));
+  }
+
+  .btn.ghost{
+    background:transparent;
+    border-color:transparent;
+    color:var(--muted);
+  }
+
+  .btn.ghost:hover{
+    border-color:var(--line);
+    color:var(--text);
+  }
+
+  .icon{
+    width:16px;
+    height:16px;
+    display:inline-block;
+    flex:0 0 auto;
+  }
+
+  /* ===== Hero ===== */
+  .hero{ padding:34px 0 22px; }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.22fr .78fr;
+    gap:18px;
+    align-items:stretch;
+  }
+
+  .hero-card,
+  .metric-card,
+  .card{
+    background:linear-gradient(180deg, color-mix(in srgb, var(--card) 94%, #fff), var(--card));
+    border:1px solid color-mix(in srgb, var(--line) 85%, transparent);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+
+  .hero-card{
+    padding:clamp(18px, 2.6vw, 28px);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero-card::before{
+    content:"";
+    position:absolute;
+    inset:-40% -25%;
+    pointer-events:none;
+    background:
+      radial-gradient(40% 30% at 20% 25%, rgba(91,140,255,.14), transparent 60%),
+      radial-gradient(35% 28% at 85% 20%, rgba(47,107,255,.10), transparent 56%),
+      radial-gradient(42% 34% at 50% 88%, rgba(141,180,255,.08), transparent 66%);
+  }
+
+  .hero-content{ position:relative; z-index:1; }
+
+  .hero-id{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:14px;
+  }
+
   .avatar{
-    width: 84px;
-    height: 84px;
-    border-radius: 16px;
-  }
-}
-.rf-calc{
-  /* NÃO re-declare as mesmas variáveis aqui (evita var(--x) referenciar a si mesma) */
-  padding: 26px 0;
-  background: transparent;
-  color: var(--text);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
-  .rf-calc__wrap{
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 18px;
+    width:120px;
+    height:120px;
+    border-radius:20px;
+    object-fit:cover;
+    border:1px solid color-mix(in srgb, var(--line) 80%, transparent);
+    box-shadow:0 18px 35px rgba(15,23,42,.12);
+    background:color-mix(in srgb, var(--card-2) 80%, transparent);
   }
 
-  .rf-calc__head{
-    margin-bottom: 14px;
+  .hero-name{
+    font-weight:700;
+    letter-spacing:-0.02em;
+    font-size:14px;
   }
 
+  .hero-role{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:3px;
+  }
+
+  .kicker,
   .rf-calc__kicker{
     display:inline-flex;
     align-items:center;
     gap:10px;
-    padding: 8px 12px;
-    border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-    background: color-mix(in srgb, var(--green-100) 55%, transparent);
-    color: var(--muted);
-    font-size: 12px;
-  }
-  .rf-calc__dot{
-    width:8px;height:8px;border-radius:50%;
-    background: var(--gold);
-    box-shadow: 0 0 0 4px rgba(184,164,106,.12);
+    padding:8px 12px;
+    border-radius:999px;
+    border:1px solid color-mix(in srgb, var(--line) 78%, transparent);
+    background:color-mix(in srgb, var(--ice-100) 55%, transparent);
+    color:var(--muted);
+    font-size:12px;
+    backdrop-filter:blur(8px);
   }
 
-  .rf-calc__title{
-    margin: 10px 0 6px;
-    font-size: 18px;
-    letter-spacing: -0.02em;
-  }
-  .rf-title--withIcon{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-}
-
-.rf-btn--icon{
-  display:inline-flex;
-  align-items:center;
-  gap: 10px;
-}
-
-.rf-btn__ico{
-  width: 26px;
-  height: 26px;
-  border-radius: 10px;
-  display:grid;
-  place-items:center;
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.18);
-}
-
-.rf-ico--btn{
-  width: 16px;
-  height: 16px;
-  color: #fff;
-}
-
-.rf-title__icon{
-  width: 34px;
-  height: 34px;
-  border-radius: 12px;
-  display:grid;
-  place-items:center;
-  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-  background: color-mix(in srgb, var(--green-100) 55%, transparent);
-  color: color-mix(in srgb, var(--green-900) 88%, var(--text));
-  box-shadow: 0 10px 22px rgba(17,24,39,.06);
-}
-
-.rf-ico{
-  width: 18px;
-  height: 18px;
-  display:block;
-}
-  .rf-calc__sub{
-    margin: 0;
-    color: var(--muted);
-    font-size: 13px;
-    max-width: 72ch;
+  .dot,
+  .rf-calc__dot,
+  .rf-modal__dot{
+    width:8px;
+    height:8px;
+    border-radius:999px;
+    background:var(--accent);
+    box-shadow:0 0 0 4px rgba(47,107,255,.12);
   }
 
-  .rf-calc__grid{
-    display:grid;
-    grid-template-columns: 1.05fr .95fr;
-    gap: 14px;
-    align-items: stretch;
+  h1{
+    margin:14px 0 10px;
+    font-size:clamp(28px, 3.3vw, 46px);
+    line-height:1.04;
+    letter-spacing:-0.045em;
+    max-width:12ch;
   }
 
-  .rf-calc__card{
-    background: var(--card);
-    border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 18px;
-  }
-  .rf-calc__card--result{
-    background: linear-gradient(180deg, color-mix(in srgb, var(--green-100) 45%, transparent), transparent 75%);
+  .sub{
+    margin:0 0 16px;
+    color:var(--muted);
+    font-size:15px;
+    max-width:72ch;
   }
 
-  .rf-calc__row{ margin-bottom: 12px; }
-  .rf-calc__label{
-    display:block;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
-  .rf-calc__input{
-    width:100%;
-    border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
-    border-radius: 14px;
-    padding: 11px 12px;
-    font-size: 13px;
-    background: color-mix(in srgb, var(--bg) 75%, transparent);
-    color: var(--text);
-    outline: none;
-    transition: box-shadow .18s ease, border-color .18s ease, background .18s ease;
-  }
-  .rf-calc__input:focus{
-    box-shadow: var(--focus);
-    border-color: color-mix(in srgb, var(--green-900) 25%, var(--line));
-    background: color-mix(in srgb, var(--card) 85%, transparent);
-  }
-  .rf-calc__hint{
-    display:block;
-    margin-top: 6px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-
-  .rf-calc__split{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    align-items: start;
-  }
-
-  .rf-calc__toggle{
-    border: 1px dashed color-mix(in srgb, var(--line) 80%, transparent);
-    border-radius: 14px;
-    padding: 10px;
-    background: color-mix(in srgb, var(--bg) 70%, transparent);
-  }
-
-  .rf-calc__switch{
-    width:100%;
+  .hero-cta{
     display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap: 10px;
-    border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
-    border-radius: 999px;
-    padding: 10px 12px;
-    background: transparent;
-    color: var(--text);
-    cursor:pointer;
-    margin-top: 8px;
-    transition: background .18s ease, border-color .18s ease;
-  }
-  .rf-calc__switch:hover{
-    background: color-mix(in srgb, var(--green-100) 55%, transparent);
-    border-color: color-mix(in srgb, var(--green-900) 20%, var(--line));
-  }
-  .rf-calc__switchDot{
-    width: 22px; height: 22px;
-    border-radius: 999px;
-    background: var(--green-900);
-    box-shadow: 0 6px 16px rgba(14,59,46,.18);
-    transform: translateX(0);
-    transition: transform .18s ease, background .18s ease;
-  }
-  .rf-calc__switch[aria-pressed="false"] .rf-calc__switchDot{
-    background: color-mix(in srgb, var(--line) 70%, var(--muted));
-    transform: translateX(22px);
-  }
-  .rf-calc__switchText{
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 600;
-  }
-
-  .rf-calc__actions{
-    display:flex;
-    gap: 10px;
-    flex-wrap:wrap;
-    margin-top: 4px;
-  }
-  .rf-calc__btn{
-    border: 1px solid var(--line);
-    background: transparent;
-    padding: 10px 12px;
-    border-radius: 12px;
-    font-size: 13px;
-    color: var(--text);
-    cursor:pointer;
-    user-select:none;
-    transition: transform .12s ease, background .18s ease, border-color .18s ease;
-    justify-content: center;
-  }
-  .rf-calc__btn:focus{ outline:none; box-shadow: var(--focus); }
-  .rf-calc__btn:hover{
-    background: color-mix(in srgb, var(--green-100) 65%, transparent);
-    border-color: color-mix(in srgb, var(--green-900) 20%, var(--line));
-  }
-  .rf-calc__btn--primary{
-    background: var(--green-900);
-    border-color: var(--green-900);
-    color:#fff;
-  }
-  .rf-calc__btn--primary:hover{
-    background: color-mix(in srgb, var(--green-900) 88%, #000 12%);
-    transform: translateY(-1px);
-  }
-  .rf-calc__btnIcon{ margin-left: 10px; }
-
-  .rf-calc__note{
-    margin-top: 12px;
-    padding: 12px;
-    border-radius: 14px;
-    border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-    background: color-mix(in srgb, var(--bg) 70%, transparent);
-    color: var(--muted);
-    font-size: 12px;
-  }
-  .rf-calc__note strong{ color: var(--text); }
-
-  /* Results */
-  .rf-calc__resultTop{
-    display:flex;
-    justify-content:space-between;
-    gap: 10px;
-    align-items:center;
-    margin-bottom: 10px;
-  }
-  .rf-calc__badge{
-    display:inline-flex;
-    align-items:center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--muted);
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-    padding: 7px 10px;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--card) 65%, transparent);
-    white-space:nowrap;
-  }
-  .rf-calc__badge--gold{
-    border-color: color-mix(in srgb, var(--gold) 45%, var(--line));
-    background: color-mix(in srgb, rgba(184,164,106,.12) 100%, transparent);
-  }
-
-  .rf-calc__big{
-    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--green-900);
-  }
-  .rf-calc__small{
-    margin-top: 4px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-  .rf-calc__divider{
-    height:1px;
-    background: color-mix(in srgb, var(--line) 70%, transparent);
-    margin: 14px 0;
-  }
-  .rf-calc__kvs{
-    display:grid;
-    gap: 10px;
-  }
-  .rf-calc__kv{
-    display:flex;
-    justify-content:space-between;
-    gap: 12px;
-    padding: 10px 12px;
-    border-radius: 14px;
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-    background: color-mix(in srgb, var(--bg) 70%, transparent);
-  }
-  .rf-calc__kvK{
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .rf-calc__kvV{
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text);
-    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  }
-
-  .rf-calc__insight{
-    padding: 12px;
-    border-radius: 14px;
-    border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-    background: color-mix(in srgb, var(--card) 70%, transparent);
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.45;
-  }
-  .rf-calc__insight strong{ color: var(--text); }
-
-  .rf-calc__resultActions{
-    display:flex;
-    gap: 10px;
-    flex-wrap:wrap;
-    margin-top: 12px;
-  }
-  .rf-calc__btn--ghost{
-    background: transparent;
-  }
-
-  @media (max-width: 980px){
-    .rf-calc__grid{ grid-template-columns: 1fr; }
-  }
-  @media (max-width: 520px){
-    .rf-calc__split{ grid-template-columns: 1fr; }
-  }
-
-   .rf-calc__helpBtn{
-    margin-left: auto;
-    border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-    background: color-mix(in srgb, var(--card) 70%, transparent);
-    color: var(--muted);
-    font-size: 12px;
-    padding: 8px 10px;
-    border-radius: 999px;
-    cursor: pointer;
-    transition: background .18s ease, border-color .18s ease, color .18s ease, transform .12s ease;
-    white-space: nowrap;
-  }
-  .rf-calc__helpBtn:hover{
-    background: color-mix(in srgb, var(--green-100) 60%, transparent);
-    border-color: color-mix(in srgb, var(--green-900) 20%, var(--line));
-    color: var(--text);
-    transform: translateY(-1px);
-  }
-  .rf-calc__helpBtn:focus{ outline:none; box-shadow: var(--focus); }
-
-  .rf-modal{
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: none;
-  }
-  .rf-modal.is-open{ display: block; }
-
-  .rf-modal__backdrop{
-    position:absolute;
-    inset:0;
-    background: rgba(0,0,0,.38);
-    backdrop-filter: blur(6px);
-  }
-
-  .rf-modal__panel{
-    position: relative;
-    max-width: 860px;
-    margin: 6vh auto;
-    background: var(--card);
-    color: var(--text);
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-    border-radius: 18px;
-    box-shadow: 0 28px 70px rgba(0,0,0,.25);
-    overflow: hidden;
-  }
-
-  .rf-modal__head{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap: 14px;
-    padding: 16px 16px 12px;
-    border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
-    background: linear-gradient(180deg, color-mix(in srgb, var(--green-100) 55%, transparent), transparent 70%);
-  }
-
-  .rf-modal__kicker{
-    display:inline-flex;
     align-items:center;
     gap:10px;
-    padding: 7px 10px;
-    border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-    background: color-mix(in srgb, var(--card) 65%, transparent);
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 8px;
-  }
-  .rf-modal__dot{
-    width:8px;height:8px;border-radius:50%;
-    background: var(--gold);
-    box-shadow: 0 0 0 4px rgba(184,164,106,.12);
+    flex-wrap:wrap;
+    margin-top:18px;
   }
 
-  .rf-modal__title{
-    margin: 0;
-    font-size: 15px;
-    letter-spacing: -0.02em;
-  }
-
-  .rf-modal__close{
-    border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-    background: color-mix(in srgb, var(--card) 75%, transparent);
-    color: var(--muted);
-    border-radius: 12px;
-    padding: 10px 12px;
-    cursor: pointer;
-    transition: background .18s ease, border-color .18s ease, color .18s ease;
-    line-height: 1;
-  }
-  .rf-modal__close:hover{
-    background: color-mix(in srgb, var(--green-100) 60%, transparent);
-    border-color: color-mix(in srgb, var(--green-900) 20%, var(--line));
-    color: var(--text);
-  }
-  .rf-modal__close:focus{ outline:none; box-shadow: var(--focus); }
-
-  .rf-modal__body{
-    padding: 16px;
-  }
-
-  .rf-modal__grid{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .rf-modal__card{
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-    background: color-mix(in srgb, var(--bg) 72%, transparent);
-    border-radius: 16px;
-    padding: 14px;
-  }
-
-  .rf-modal__h{
-    display:block;
-    font-size: 13px;
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
-  }
-
-  .rf-modal__list{
-    margin: 0;
-    padding-left: 18px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.55;
-  }
-  .rf-modal__list strong{ color: var(--text); }
-
-  .rf-modal__bullets{
-    display:grid;
-    gap: 10px;
-  }
-  .rf-modal__bullet{
+  .meta{
     display:flex;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 14px;
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-    background: color-mix(in srgb, var(--card) 70%, transparent);
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+    color:var(--muted);
+    font-size:12px;
   }
+
+  .meta .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
+    border-radius:999px;
+    border:1px solid color-mix(in srgb, var(--line) 75%, transparent);
+    background:color-mix(in srgb, var(--card) 72%, transparent);
+    box-shadow:var(--shadow-sm);
+  }
+
+  .mono{
+    font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  /* ===== Metric area ===== */
+  .metrics{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    height:100%;
+  }
+
+  .metric-card{
+    padding:18px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .metric-card::before{
+    content:"";
+    position:absolute;
+    inset:auto -10% -35% auto;
+    width:220px;
+    height:220px;
+    border-radius:999px;
+    background:radial-gradient(circle, rgba(91,140,255,.09), transparent 65%);
+    pointer-events:none;
+  }
+
+  .metric-card .title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:12px;
+  }
+
+  .metric-card .title strong{
+    font-size:12px;
+    color:var(--muted);
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+
+  .metric{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+
+  .metric .box{
+    border:1px solid color-mix(in srgb, var(--line) 82%, transparent);
+    border-radius:16px;
+    padding:12px;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--ice-100) 52%, transparent), transparent 120%);
+  }
+
+  .metric .num{
+    font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:-0.03em;
+    color:var(--navy-700);
+  }
+
+  [data-theme="dark"] .metric .num{
+    color:var(--blue-300);
+  }
+
+  .metric .label{
+    margin-top:6px;
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  /* ===== Sections ===== */
+  section{ padding:24px 0; }
+
+  .section-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:14px;
+  }
+
+  .section-head h2{
+    margin:0;
+    font-size:18px;
+    letter-spacing:-0.03em;
+  }
+
+  .section-head p{
+    margin:0;
+    color:var(--muted);
+    font-size:13px;
+    max-width:74ch;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(12, 1fr);
+    gap:14px;
+  }
+
+  .card{
+    padding:var(--pad);
+  }
+
+  .card.slim{ padding:18px; }
+
+  .col-12{ grid-column:span 12; }
+  .col-8{ grid-column:span 8; }
+  .col-7{ grid-column:span 7; }
+  .col-6{ grid-column:span 6; }
+  .col-5{ grid-column:span 5; }
+  .col-4{ grid-column:span 4; }
+
+  .list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .item{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    padding:12px;
+    border-radius:16px;
+    border:1px solid color-mix(in srgb, var(--line) 80%, transparent);
+    background:color-mix(in srgb, var(--card-2) 75%, transparent);
+  }
+
+  .badge,
+  .rf-calc__badge,
+  .rf-modal__kicker,
   .rf-modal__bTag{
     display:inline-flex;
     align-items:center;
-    justify-content:center;
-    height: 26px;
-    padding: 0 10px;
-    border-radius: 999px;
-    font-size: 11px;
-    color: var(--muted);
-    border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-    background: color-mix(in srgb, var(--green-100) 55%, transparent);
-    white-space: nowrap;
-  }
-  .rf-modal__muted{
-    margin-top: 2px;
-    color: var(--muted);
-    font-size: 12px;
+    gap:8px;
+    padding:7px 10px;
+    border-radius:999px;
+    font-size:12px;
+    color:var(--muted);
+    border:1px solid color-mix(in srgb, var(--line) 75%, transparent);
+    background:color-mix(in srgb, var(--card) 78%, transparent);
+    white-space:nowrap;
   }
 
-  .rf-modal__tip{
-    margin-top: 12px;
-    padding: 12px;
-    border-radius: 14px;
-    border: 1px dashed color-mix(in srgb, var(--line) 80%, transparent);
-    background: color-mix(in srgb, var(--card) 75%, transparent);
-    color: var(--muted);
-    font-size: 12px;
+  .item strong{
+    display:block;
+    margin-bottom:2px;
+    font-size:14px;
+    letter-spacing:-0.01em;
   }
-  .rf-modal__tip strong{ color: var(--text); }
 
-  .rf-modal__footer{
+  .item p{
+    margin:0;
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  .tags{
     display:flex;
-    justify-content:flex-end;
-    gap: 10px;
     flex-wrap:wrap;
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+    gap:8px;
+    margin-top:6px;
   }
+
+  .tag{
+    font-size:11px;
+    color:var(--muted);
+    border:1px solid color-mix(in srgb, var(--line) 78%, transparent);
+    padding:6px 9px;
+    border-radius:999px;
+    background:color-mix(in srgb, var(--card) 70%, transparent);
+  }
+
+  .project,
+  .demo-card{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:16px;
+    border-radius:var(--radius);
+    border:1px solid color-mix(in srgb, var(--line) 80%, transparent);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--ice-100) 48%, transparent), transparent 75%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4);
+  }
+
+  [data-theme="dark"] .project,
+  [data-theme="dark"] .demo-card{
+    background:
+      linear-gradient(180deg, rgba(91,140,255,.08), transparent 78%);
+  }
+
+  .project .top,
+  .demo-card .top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+  }
+
+  .project h3,
+  .demo-card h3{
+    margin:0;
+    font-size:15px;
+    letter-spacing:-0.02em;
+  }
+
+  .project .desc,
+  .demo-card .desc{
+    margin:0;
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  .kv{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:6px;
+  }
+
+  .kv .k{
+    border:1px dashed color-mix(in srgb, var(--line) 88%, transparent);
+    border-radius:14px;
+    padding:10px;
+    background:color-mix(in srgb, var(--bg) 72%, transparent);
+  }
+
+  .kv .k .t{
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+
+  .kv .k .v{
+    margin-top:6px;
+    font-size:13px;
+    color:var(--text);
+    font-weight:600;
+  }
+
+  /* ===== Toolbar / filtros ===== */
+  .toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+  }
+
+  .search{
+    flex:1 1 320px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid color-mix(in srgb, var(--line) 82%, transparent);
+    border-radius:14px;
+    padding:10px 12px;
+    background:color-mix(in srgb, var(--card) 86%, transparent);
+  }
+
+  .search input{
+    width:100%;
+    border:0;
+    outline:none;
+    background:transparent;
+    color:var(--text);
+    font-size:13px;
+  }
+
+  .chiprow{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+
+  .chip{
+    border:1px solid color-mix(in srgb, var(--line) 80%, transparent);
+    padding:8px 10px;
+    border-radius:999px;
+    font-size:12px;
+    color:var(--muted);
+    background:transparent;
+    cursor:pointer;
+    transition:background .18s ease, border-color .18s ease, color .18s ease, transform .14s ease;
+    user-select:none;
+  }
+
+  .chip:hover{
+    background:var(--accent-soft);
+    border-color:color-mix(in srgb, var(--accent) 20%, var(--line));
+    color:var(--text);
+    transform:translateY(-1px);
+  }
+
+  .chip[aria-pressed="true"]{
+    color:var(--text);
+    background:color-mix(in srgb, var(--accent-soft) 85%, var(--card));
+    border-color:color-mix(in srgb, var(--accent) 28%, var(--line));
+  }
+
+  /* ===== Certificados ===== */
+  .cert-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:12px;
+  }
+
+  .cert{
+    border:1px solid color-mix(in srgb, var(--line) 80%, transparent);
+    border-radius:16px;
+    padding:12px;
+    background:color-mix(in srgb, var(--card-2) 80%, transparent);
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+  }
+
+  .cert .name{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  .cert .org{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:3px;
+  }
+
+  .cert .meta{
+    margin:0;
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-end;
+    gap:8px;
+    color:var(--muted);
+    font-size:11px;
+    flex-wrap:wrap;
+  }
+
+  /* ===== New tools section ===== */
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:16px;
+  align-items:start;
+}
+
+.tool-card{
+  background:linear-gradient(180deg, color-mix(in srgb, var(--card) 95%, #fff), var(--card));
+  border:1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+  min-width:0;
+}
+.tool-card--wide{
+  grid-column:1 / -1;
+}
+
+  .tool-card::before{
+    content:"";
+    position:absolute;
+    inset:auto -20px -60px auto;
+    width:180px;
+    height:180px;
+    border-radius:999px;
+    background:radial-gradient(circle, rgba(91,140,255,.12), transparent 66%);
+    pointer-events:none;
+  }
+
+  .tool-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+  }
+
+  .tool-icon{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(180deg, rgba(91,140,255,.20), rgba(47,107,255,.08));
+    border:1px solid rgba(91,140,255,.20);
+    color:var(--accent);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+  }
+
+  .tool-card h3{
+    margin:0;
+    font-size:15px;
+    letter-spacing:-0.02em;
+  }
+
+  .tool-card p{
+    margin:8px 0 0;
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  .tool-body{
+    display:grid;
+    gap:10px;
+    margin-top:14px;
+  }
+
+  .tool-label{
+    display:block;
+    font-size:12px;
+    font-weight:600;
+    color:var(--text);
+    margin-bottom:6px;
+  }
+
+  .tool-input,
+  .tool-select,
+  .tool-textarea{
+    width:100%;
+    border:1px solid color-mix(in srgb, var(--line) 86%, transparent);
+    border-radius:14px;
+    padding:11px 12px;
+    background:color-mix(in srgb, var(--bg) 76%, transparent);
+    color:var(--text);
+    outline:none;
+    transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+
+  .tool-textarea{
+    min-height:130px;
+    resize:vertical;
+  }
+
+  .tool-input:focus,
+  .tool-select:focus,
+  .tool-textarea:focus{
+    border-color:color-mix(in srgb, var(--accent) 30%, var(--line));
+    background:color-mix(in srgb, var(--card) 88%, transparent);
+  }
+
+  .tool-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:4px;
+  }
+
+  .rf-tool-btn{
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--text);
+    padding:10px 12px;
+    border-radius:12px;
+    font-size:13px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    cursor:pointer;
+    transition:all .18s ease;
+  }
+
+  .rf-tool-btn:hover{
+    background:var(--accent-soft);
+    border-color:color-mix(in srgb, var(--accent) 24%, var(--line));
+    transform:translateY(-1px);
+  }
+
+  .rf-tool-btn.primary{
+    color:#fff;
+    border-color:transparent;
+    background:linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 18%, #fff), var(--accent));
+    box-shadow:0 10px 22px rgba(47,107,255,.20);
+  }
+
+  .rf-tool-btn.primary:hover{
+    background:linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 28%, #fff), color-mix(in srgb, var(--accent) 90%, #000 10%));
+  }
+
+.tool-result{
+  margin-top:14px;
+  padding:16px;
+  border-radius:16px;
+  border:1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  background:color-mix(in srgb, var(--card-2) 78%, transparent);
+  display:grid;
+  gap:12px;
+  min-width:0;
+}
+
+  .tool-result.is-empty{
+    color:var(--muted);
+    font-size:13px;
+  }
+
+.result-kpis{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:10px;
+}
+
+  .result-kpi{
+    border:1px solid color-mix(in srgb, var(--line) 82%, transparent);
+    border-radius:14px;
+    padding:10px;
+    background:color-mix(in srgb, var(--bg) 74%, transparent);
+  }
+
+  .result-kpi .k{
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+
+  .result-kpi .v{
+    margin-top:6px;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:-0.03em;
+    font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color:var(--navy-700);
+  }
+
+  [data-theme="dark"] .result-kpi .v{
+    color:var(--blue-300);
+  }
+
+  .result-list{
+    margin:0;
+    padding-left:18px;
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    padding:26px 0 34px;
+    border-top:1px solid color-mix(in srgb, var(--line) 66%, transparent);
+    margin-top:18px;
+    color:var(--muted);
+    font-size:12px;
+  }
+
+  .footer-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  /* ===== Remove visual antigo das ferramentas removidas ===== */
+.rf-calc,
+.rf-demoModal,
+#calc-desperdicio,
+#rfHelpModal,
+#cotacaoModal{
+  display:none !important;
+}
+
+  /* ===== Responsive ===== */
+@media (max-width: 980px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .brand{ min-width:unset; }
+  .tools-grid{ grid-template-columns:1fr; }
+  .tool-card--wide{ grid-column:auto; }
+}
 
   @media (max-width: 860px){
-    .rf-modal__panel{ margin: 4vh 12px; }
-    .rf-modal__grid{ grid-template-columns: 1fr; }
+    .col-6, .col-5, .col-7, .col-4, .col-8{ grid-column:span 12; }
+    .menu{ display:none; }
+    .metric{ grid-template-columns:1fr 1fr; }
+    .cert-grid{ grid-template-columns:1fr; }
+    .nav{ min-height:58px; }
   }
-.menu .menu-highlight{
-  border: 1px solid color-mix(in srgb, var(--green-900) 20%, var(--line));
-  border-radius: 999px;
-  padding: 8px 12px;
-  color: var(--text);
-  background: color-mix(in srgb, var(--green-100) 45%, transparent);
+
+  @media (max-width: 640px){
+    .result-kpis{ grid-template-columns:1fr; }
+    .kv{ grid-template-columns:1fr; }
+  }
+
+  @media (max-width: 520px){
+    .hero-cta{
+      flex-direction:column;
+      align-items:stretch;
+    }
+
+    .btn,
+    .rf-tool-btn{
+      width:100%;
+    }
+
+    .actions{
+      width:100%;
+      justify-content:stretch;
+    }
+
+    .actions .btn{
+      flex:1 1 auto;
+    }
+
+    .metric{ grid-template-columns:1fr; }
+
+    .chiprow{ justify-content:flex-start; }
+
+    .hero-id{
+      align-items:flex-start;
+    }
+
+    .avatar{
+      width:88px;
+      height:88px;
+      border-radius:18px;
+    }
+
+    h1{
+      max-width:100%;
+      font-size:clamp(26px, 8vw, 34px);
+    }
+  }
+  .rf-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  z-index:200;
 }
 
-.menu .menu-highlight:hover{
-  background: color-mix(in srgb, var(--green-100) 65%, transparent);
-}
-/* ===== Demo Cotação Inteligente (card + modal iframe) ===== */
-.demo-card{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  padding: 16px;
-  border-radius: var(--radius);
-  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--green-100) 45%, transparent), transparent 70%);
+.rf-modal.active{
+  display:block;
 }
 
-.demo-card .top{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap: 12px;
-}
-.demo-card h3{
-  margin:0;
-  font-size: 15px;
-  letter-spacing: -0.02em;
-}
-.demo-card .desc{
-  margin:0;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.demo-card .actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.rf-demoModal{
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  display: none;
-}
-.rf-demoModal.is-open{ display:block; }
-
-.rf-demoModal__backdrop{
+.rf-modal__overlay{
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,.55);
-  backdrop-filter: blur(8px);
+  background:rgba(0,0,0,.5);
+  backdrop-filter:blur(6px);
 }
 
-.rf-demoModal__panel{
-  position: relative;
-  width: min(1100px, 96vw);
-  height: min(90vh, 900px);
-  margin: 5vh auto;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #0b1410;
-  border: 1px solid rgba(80,255,170,.14);
-  box-shadow: 0 24px 80px rgba(0,0,0,.55);
-  display:flex;
-  flex-direction:column;
+.rf-modal__card{
+  position:relative;
+  margin:8vh auto;
+  max-width:520px;
+  background:var(--card);
+  border-radius:18px;
+  padding:22px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-lg);
+  z-index:1;
 }
 
-.rf-demoModal__head{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap: 12px;
-  padding: 12px 14px;
-  border-bottom:1px solid rgba(80,255,170,.12);
-  background: linear-gradient(180deg, rgba(80,255,170,.10), transparent);
-  color:#e9fff4;
-}
-
-.rf-demoModal__title{
-  margin:0;
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-.rf-demoModal__sub{
-  margin-top: 2px;
-  font-size: 12px;
-  opacity: .72;
-}
-
-.rf-demoModal__actions{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.rf-demoBtn{
-  border-radius: 12px;
-  padding: 10px 12px;
-  border:1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.05);
-  color:#e9fff4;
-  font-weight: 750;
-  cursor:pointer;
-  text-decoration:none;
-}
-.rf-demoBtn:hover{
-  background: rgba(255,255,255,.09);
-}
-
-.rf-demoBtn.ghost{
-  background: rgba(0,0,0,.18);
-  border-color: rgba(255,255,255,.10);
-}
-
-.rf-demoModal__body{
-  flex:1;
-  background:#07140f;
-}
-.rf-demoModal__body iframe{
-  width:100%;
-  height:100%;
-  border:0;
+.rf-modal__close{
+  position:absolute;
+  top:12px;
+  right:12px;
   background:transparent;
+  border:0;
+  font-size:16px;
+  cursor:pointer;
+  color:var(--muted);
 }
 
-@media (max-width: 860px){
-  .rf-demoModal__panel{ margin: 3vh 12px; height: 92vh; }
+.rf-modal__title{
+  margin:10px 0 10px;
+  font-size:18px;
 }
 
-  </style>
-</head>
+.rf-modal__text{
+  font-size:13px;
+  color:var(--muted);
+}
 
+.rf-modal__block{
+  margin-top:14px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.rf-modal__block ul{
+  padding-left:18px;
+}
+</style>
 <body>
   <!-- SVG icons -->
   <svg width="0" height="0" style="position:absolute">
@@ -1136,6 +1111,15 @@
     <symbol id="i-search" viewBox="0 0 24 24">
       <path fill="currentColor" d="M10 2a8 8 0 1 1 5.3 14l4.7 4.7-1.4 1.4-4.7-4.7A8 8 0 0 1 10 2Zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"></path>
     </symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v10h16V7H4Zm2.4 2.3 3.2 2.7-3.2 2.7 1.2 1.4 4.8-4.1-4.8-4.1-1.2 1.4ZM13 15h4v-2h-4v2Z"></path>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2l7 3v6c0 5-3.4 9.4-7 11-3.6-1.6-7-6-7-11V5l7-3Zm0 2.2L7 6.3V11c0 3.9 2.4 7.3 5 8.7 2.6-1.4 5-4.8 5-8.7V6.3l-5-2.1Z"></path>
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M5 3h2v16h14v2H5V3Zm4 10h2v4H9v-4Zm4-6h2v10h-2V7Zm4 3h2v7h-2v-7Z"></path>
+    </symbol>
   </svg>
 
   <header>
@@ -1145,7 +1129,7 @@
           <div class="mark" aria-hidden="true"></div>
           <div>
             <strong>Raudiney Farias</strong>
-            <span>Compras • Financeiro • Processos • Dados</span>
+            <span>Suporte Técnico • Infraestrutura • Automação • Dados</span>
           </div>
         </a>
 
@@ -1153,7 +1137,8 @@
           <a href="#sobre">Sobre</a>
           <a href="#experiencia">Experiência</a>
           <a href="#competencias">Competências</a>
-          <a href="#projetos">Projeto</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#ferramentas">Ferramentas</a>
           <a href="#certificados">Certificados</a>
           <a href="#contato">Contato</a>
         </nav>
@@ -1163,6 +1148,7 @@
             <svg class="icon" aria-hidden="true"><use href="#i-moon"></use></svg>
             <span id="themeLabel">Tema</span>
           </button>
+
           <a class="btn primary" href="#contato">
             <span>Falar comigo</span>
             <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
@@ -1179,62 +1165,32 @@
         <div class="hero-card">
           <div class="hero-content">
             <div class="hero-id">
-            <img src="raudiney2.png" alt="Raudiney Farias" class="avatar">
-            <strong> </strong>
-            <strong>Raudiney Farias</strong>
-            </div>
-            <div>
-            </div>
-            <div class="kicker">
-              <span class="dot" aria-hidden="true"></span>
-              <span>Foco atual em <strong>Compras</strong> e <strong>rotina financeira</strong> • tecnologia como diferencial</span>
+              <img src="raudiney2.png" alt="Raudiney Farias" class="avatar">
+              <div>
+                <div class="hero-name">Raudiney Farias</div>
+                <div class="hero-role">Técnico de Suporte • Processos • Automação • Dados</div>
+              </div>
             </div>
 
-            <h1>Compras e Financeiro com visão de processo, dados e controle.</h1>
+
+
+            <h1>Suporte Técnico com visão estratégica em infraestrutura, automação e dados.</h1>
 
             <p class="sub">
-              Sou <strong>Raudiney Farias</strong>. Atuo com processos, indicadores e automação — criando soluções que organizam a operação
-              e fortalecem a tomada de decisão. Hoje, minha atuação profissional é como <strong>Comprador na Sim Engenharia</strong>.
+              Atuo em tecnologia com foco na resolução de problemas, suporte ao usuário, organização de rotinas e melhoria de processos.
+              Minha base une atendimento técnico, análise operacional e construção de soluções práticas para gerar mais estabilidade,
+              eficiência e confiança no dia a dia.
             </p>
 
             <div class="hero-cta">
               <a class="btn primary" href="#projetos">
-                <span>Ver projeto em destaque</span>
+                <span>Ver projetos</span>
                 <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
               </a>
-              <a class="btn" href="#certificados">
-                <span>Ver certificados</span>
-              </a>
-              <a class="btn" href="#calc-desperdicio">
 
-              <!-- cole aqui o SVG -->
-              <svg class="rf-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M7.5 9.5h2m-2 3h2m-2 3h2M13.5 9.5h3m-3 3h3m-3 3h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M6.25 4.75h11.5A1.5 1.5 0 0 1 19.25 6.25v11.5a1.5 1.5 0 0 1-1.5 1.5H6.25a1.5 1.5 0 0 1-1.5-1.5V6.25a1.5 1.5 0 0 1 1.5-1.5Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-                <path d="M7 7h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M16.8 6.9l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-
-              <span>Calculadora</span>
+              <a class="btn" href="#ferramentas">
+                <span>Explorar ferramentas</span>
               </a>
-              <button class="rf-calc__btn rf-btn--icon" id="openCotacaoDemo">
-                <span class="rf-btn__ico" aria-hidden="true">
-                  <svg class="rf-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path d="M6 7v10M10 7v10M14 7v10"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="1.6"
-                          stroke-linecap="round"/>
-                    <path d="M18 9l3 3-3 3"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="1.6"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                Ferramenta de Cotação
-              </button>
 
               <button class="btn" type="button" id="copyEmailBtn" data-email="raudiney-@hotmail.com">
                 <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
@@ -1243,9 +1199,9 @@
             </div>
 
             <div class="meta">
-              <span class="pill"><span class="mono">Atuação:</span> Compras (Sim Engenharia)</span>
-              <span class="pill"><span class="mono">Base:</span> Financeiro & Administrativo</span>
-              <span class="pill"><span class="mono">Diferencial:</span> Excel/BI + Automação</span>
+              <span class="pill"><span class="mono">Foco:</span> Suporte e operação</span>
+              <span class="pill"><span class="mono">Base:</span> Processos + dados</span>
+              <span class="pill"><span class="mono">Diferencial:</span> Automação aplicada</span>
             </div>
           </div>
         </div>
@@ -1254,25 +1210,25 @@
           <div class="metric-card">
             <div class="title">
               <strong>O que eu entrego</strong>
-              <span class="badge">executivo</span>
+              <span class="badge">perfil técnico</span>
             </div>
 
             <div class="metric">
               <div class="box">
-                <div class="num mono">Controle</div>
-                <div class="label">rotinas, pagamentos, prazos, rastreabilidade</div>
+                <div class="num mono">Suporte</div>
+                <div class="label">atendimento, análise e resolução de problemas</div>
               </div>
               <div class="box">
-                <div class="num mono">Compras</div>
-                <div class="label">cotações, negociação, organização do fluxo</div>
+                <div class="num mono">Processo</div>
+                <div class="label">organização, padronização e menos retrabalho</div>
               </div>
               <div class="box">
-                <div class="num mono">Análise</div>
-                <div class="label">indicadores, leitura de dados e relatórios</div>
+                <div class="num mono">Dados</div>
+                <div class="label">leitura operacional e apoio à decisão</div>
               </div>
               <div class="box">
                 <div class="num mono">Automação</div>
-                <div class="label">menos retrabalho, mais consistência</div>
+                <div class="label">soluções práticas para ganho de eficiência</div>
               </div>
             </div>
           </div>
@@ -1280,33 +1236,36 @@
           <div class="metric-card">
             <div class="title">
               <strong>Resumo técnico</strong>
-              <span class="badge" style="border-color: color-mix(in srgb, var(--gold) 40%, var(--line));">diferencial</span>
+              <span class="badge">stack aplicada</span>
             </div>
+
             <div class="list">
               <div class="item">
-                <span class="badge">Excel</span>
+                <span class="badge">Suporte</span>
                 <div>
-                  <strong>Avançado + estruturação</strong>
-                  <p>Controles, validação, análise e relatórios.</p>
+                  <strong>Atendimento com visão de causa</strong>
+                  <p>Não apenas executo: investigo, organizo e busco estabilidade no processo.</p>
                 </div>
               </div>
+
               <div class="item">
-                <span class="badge">Power BI</span>
+                <span class="badge">Infra</span>
                 <div>
-                  <strong>Indicadores e visão gerencial</strong>
-                  <p>Dashboards limpos para decisão.</p>
+                  <strong>Base em redes e ambientes</strong>
+                  <p>Infraestrutura básica, conectividade, sistemas e apoio operacional.</p>
                 </div>
               </div>
+
               <div class="item">
                 <span class="badge">Dev</span>
                 <div>
-                  <strong>Django, MySQL e web</strong>
-                  <p>Construção de sistemas de apoio à gestão.</p>
+                  <strong>Python, Django, MySQL e web</strong>
+                  <p>Criação de ferramentas e soluções para automatizar rotinas e dar rastreabilidade.</p>
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- /metrics -->
+        </div>
       </div>
     </div>
 
@@ -1316,7 +1275,7 @@
         <div class="section-head">
           <div>
             <h2>Sobre</h2>
-            <p>Posicionamento direto para vagas em compras/financeiro: organização, controle e dados.</p>
+            <p>Posicionamento técnico, direto e orientado a ambientes reais de operação.</p>
           </div>
           <span class="badge">perfil</span>
         </div>
@@ -1324,21 +1283,22 @@
         <div class="grid">
           <div class="card col-7">
             <p style="margin:0;color:var(--muted);font-size:14px;max-width:80ch;">
-              Fui supervisor em provedor de internet, com experiência em <strong>gestão operacional</strong>, rotinas administrativas e tecnologia aplicada ao negócio.
-              Tenho base sólida em <strong>Administração</strong> (contas a pagar/receber, tesouraria e cotações), domínio avançado de Excel e experiência com Power BI.
-              Também atuo com desenvolvimento (Django, MySQL e tecnologias web) para criar soluções que organizam processos e apoiam decisões.
+              Sou um profissional com atuação voltada para <strong>suporte técnico</strong>, <strong>organização de processos</strong>,
+              <strong>análise operacional</strong> e <strong>tecnologia aplicada</strong>. Minha trajetória me deu uma visão forte de rotina,
+              controle, atendimento, confiabilidade e melhoria contínua — e hoje direciono isso para a área de TI.
               <br><br>
-              Atualmente, atuo como <strong>Comprador na Sim Engenharia</strong>, buscando oportunidades que unam <strong>gestão</strong>, <strong>liderança</strong> e <strong>visão analítica</strong>,
-              entregando eficiência, organização e evolução contínua para operações.
+              Tenho base técnica em <strong>manutenção e suporte em informática</strong>, experiência com <strong>infraestrutura básica, redes, sistemas,
+              análise de dados e automação</strong>, além de domínio de ferramentas como <strong>Excel, Power BI, Python, Django e MySQL</strong>.
+              Busco atuar em contextos onde tecnologia não seja apenas suporte, mas também organização, clareza e ganho real de eficiência.
             </p>
 
             <div class="tags" style="margin-top:14px;">
-              <span class="tag">Compras e cotações</span>
-              <span class="tag">Contas a pagar/receber</span>
-              <span class="tag">Tesouraria (rotina)</span>
-              <span class="tag">Excel avançado</span>
-              <span class="tag">Power BI</span>
-              <span class="tag">Processos e indicadores</span>
+              <span class="tag">Suporte técnico</span>
+              <span class="tag">Infraestrutura básica</span>
+              <span class="tag">Redes</span>
+              <span class="tag">Automação com Python</span>
+              <span class="tag">Banco de dados</span>
+              <span class="tag">Análise de dados aplicada</span>
             </div>
           </div>
 
@@ -1347,63 +1307,29 @@
               <div class="item">
                 <span class="badge">Objetivo</span>
                 <div>
-                  <strong>Direcionamento de desenvolvimento profissional para a área financeira</strong>
-                  <p>Financeiro, compras, administrativo e apoio à controladoria.</p>
+                  <strong>Atuar com tecnologia de forma estruturada</strong>
+                  <p>Suporte, infraestrutura, automação e análise aplicada à operação.</p>
                 </div>
               </div>
+
               <div class="item">
                 <span class="badge">Entrega</span>
                 <div>
-                  <strong>Clareza e previsibilidade</strong>
-                  <p>Dados consistentes, rotina organizada e decisão mais segura.</p>
+                  <strong>Clareza, estabilidade e eficiência</strong>
+                  <p>Menos falhas, melhor leitura do problema e mais previsibilidade no ambiente.</p>
                 </div>
               </div>
+
               <div class="item">
                 <span class="badge">Estilo</span>
                 <div>
-                  <strong>Minimalista e objetivo</strong>
-                  <p>Sem ruído: foco em controle, processo e resultado.</p>
+                  <strong>Técnico, organizado e objetivo</strong>
+                  <p>Comunicação clara, raciocínio analítico e foco em solução prática.</p>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Cotação Inteligente -->
-          <div class="card col-12">
-            <div class="demo-card">
-              <div class="top">
-                <div>
-                  <h3>Cotação Inteligente — Demo</h3>
-                  <div class="tags">
-                    <span class="tag">Compras</span>
-                    <span class="tag">Comparação</span>
-                    <span class="tag">Score</span>
-                    <span class="tag">PDF</span>
-                  </div>
-                </div>
-                <span class="badge">JS</span>
-              </div>
-
-              <p class="desc">
-                Ferramenta dinâmica para adicionar fornecedores e itens, comparar propostas e gerar apoio à decisão.
-                Abre em modal para manter o portfólio limpo.
-              </p>
-
-              <div class="actions">
-                <button class="btn primary" type="button" id="openCotacaoDemo">
-                  <span>Abrir demo</span>
-                  <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
-                </button>
-
-                <a class="btn" href="demos/cotacao.html" target="_blank" rel="noopener">
-                  <span>Tela cheia</span>
-                  <svg class="icon" aria-hidden="true"><use href="#i-link"></use></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /grid -->
+        </div>
       </div>
     </section>
 
@@ -1413,7 +1339,7 @@
         <div class="section-head">
           <div>
             <h2>Experiência</h2>
-            <p>Duas etapas bem claras: atuação atual (Compras) e experiência anterior (Gestão operacional).</p>
+            <p>Experiências reposicionadas para evidenciar suporte, processos, análise e tecnologia aplicada.</p>
           </div>
           <span class="badge">carreira</span>
         </div>
@@ -1423,88 +1349,38 @@
             <div class="project">
               <div class="top">
                 <div>
-                  <h3>Comprador — Sim Engenharia</h3>
+                  <h3>Técnico de Suporte / Operação Administrativa — Sim Engenharia</h3>
                   <div class="tags">
-                    <span class="tag">Cotações</span>
-                    <span class="tag">Negociação</span>
-                    <span class="tag">Fluxo de compras</span>
+                    <span class="tag">Suporte operacional</span>
+                    <span class="tag">Processos</span>
+                    <span class="tag">Organização</span>
                     <span class="tag">Controle</span>
                   </div>
                 </div>
                 <span class="badge">atual</span>
               </div>
+
               <p class="desc">
-                Atuação com compras e rotinas de apoio administrativo, garantindo organização de solicitações, cotações e acompanhamento de processos com foco em prazo, controle e rastreabilidade.
+                Atuação em rotinas críticas com forte interface entre operação, organização de demandas, controle de fluxo e suporte ao processo.
+                Experiência aplicada em ambientes que exigem acompanhamento, resposta rápida, confiabilidade e visão estruturada da rotina.
               </p>
+
               <div class="kv">
                 <div class="k">
                   <div class="t">Foco</div>
-                  <div class="v">Compras + processo</div>
+                  <div class="v">Organização e suporte ao fluxo</div>
+                </div>
+                <div class="k">
+                  <div class="t">Método</div>
+                  <div class="v">Controle, rastreabilidade e resposta</div>
+                </div>
+                <div class="k">
+                  <div class="t">Apoio</div>
+                  <div class="v">Excel e padronização</div>
                 </div>
                 <div class="k">
                   <div class="t">Valor</div>
-                  <div class="v">Organização e controle</div>
-                </div>
-                <div class="k">
-                  <div class="t">Ferramenta</div>
-                  <div class="v">Excel + padrão</div>
-                </div>
-                <div class="k">
-                  <div class="t">Resultado</div>
-                  <div class="v">Previsibilidade</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-            <div class="card col-6">
-            <div class="project">
-              <div class="top">
-                <div>
-                  <h3>Analista Administrativo — Pau Brasil Paraíba Comércio de Motos (Honda)</h3>
-                  <div class="tags">
-                    <span class="tag">Financeiro</span>
-                    <span class="tag">Tesouraria</span>
-                    <span class="tag">Caixa</span>
-                    <span class="tag">Compras</span>
-                    <span class="tag">Processos</span>
-                  </div>
-                </div>
-                <span class="badge">histórico</span>
-              </div>
-
-              <p class="desc">
-                Atuação com liderança e suporte à gestão administrativa, integrando rotinas financeiras e operacionais com foco em controle,
-                rastreabilidade e agilidade de execução.
-              </p>
-
-              <div class="kv">
-                <div class="k">
-                  <div class="t">Principais rotinas</div>
-                  <div class="v">Caixa • Tesouraria • Depósitos • A/P • A/R</div>
-                </div>
-                <div class="k">
-                  <div class="t">Compras</div>
-                  <div class="v">Insumos • Controle de compras</div>
-                </div>
-                <div class="k">
-                  <div class="t">Análise</div>
-                  <div class="v">Planilhas complexas • Identificação de gastos</div>
-                </div>
-                <div class="k">
-                  <div class="t">Processos</div>
-                  <div class="v">Padronização • Rotinas mais rápidas</div>
-                </div>
-              </div>
-
-              <div class="item" style="margin-top:12px;">
-                <span class="badge">Capacitar</span>
-                <div>
-                  <strong>Formação de liderança e resolução de problemas</strong>
-                  <p>
-                    Módulos: Controle Emocional, Perfis de Comportamento e Resolução de Problemas.
-                    Ferramentas: SWOT, PDCA, 5W2H e 5 Porquês.
-                  </p>
+                  <div class="v">Mais clareza operacional</div>
                 </div>
               </div>
             </div>
@@ -1514,40 +1390,95 @@
             <div class="project">
               <div class="top">
                 <div>
-                  <h3>Supervisor — Provedor de Internet</h3>
+                  <h3>Analista Administrativo — Pau Brasil Paraíba Comércio de Motos (Honda)</h3>
                   <div class="tags">
-                    <span class="tag">Gestão operacional</span>
-                    <span class="tag">Rotinas administrativas</span>
-                    <span class="tag">Indicadores</span>
-                    <span class="tag">Melhoria contínua</span>
+                    <span class="tag">Processos</span>
+                    <span class="tag">Dados</span>
+                    <span class="tag">Controle</span>
+                    <span class="tag">Análise</span>
+                    <span class="tag">Rotina crítica</span>
                   </div>
                 </div>
                 <span class="badge">histórico</span>
               </div>
+
               <p class="desc">
-                Gestão de operação e organização de rotinas, com foco em padronização, acompanhamento por indicadores e tecnologia aplicada ao negócio para reduzir retrabalho e aumentar consistência.
+                Atuação em ambiente com alto volume de rotinas, exigindo precisão, organização, leitura de dados e melhoria operacional.
+                Essa base fortaleceu minha capacidade de mapear fluxos, identificar falhas, estruturar controles e agir com visão de processo.
               </p>
+
               <div class="kv">
                 <div class="k">
-                  <div class="t">Foco</div>
-                  <div class="v">Operação + gestão</div>
+                  <div class="t">Rotinas</div>
+                  <div class="v">Controle, conferência e acompanhamento</div>
                 </div>
                 <div class="k">
-                  <div class="t">Método</div>
-                  <div class="v">Processo + indicadores</div>
+                  <div class="t">Dados</div>
+                  <div class="v">Planilhas complexas e análise operacional</div>
                 </div>
                 <div class="k">
-                  <div class="t">Apoio</div>
-                  <div class="v">Automação</div>
+                  <div class="t">Processos</div>
+                  <div class="v">Padronização e redução de falhas</div>
                 </div>
                 <div class="k">
-                  <div class="t">Entrega</div>
-                  <div class="v">Decisão clara</div>
+                  <div class="t">Resultado</div>
+                  <div class="v">Mais consistência e previsibilidade</div>
+                </div>
+              </div>
+
+              <div class="item" style="margin-top:12px;">
+                <span class="badge">Método</span>
+                <div>
+                  <strong>Resolução de problemas e melhoria contínua</strong>
+                  <p>Aplicação prática de SWOT, PDCA, 5W2H e 5 Porquês em análise de rotina e tomada de decisão.</p>
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- /grid -->
+
+          <div class="card col-12">
+            <div class="project">
+              <div class="top">
+                <div>
+                  <h3>Supervisor — Provedor de Internet</h3>
+                  <div class="tags">
+                    <span class="tag">Provedor</span>
+                    <span class="tag">Operação</span>
+                    <span class="tag">Indicadores</span>
+                    <span class="tag">Tecnologia aplicada</span>
+                    <span class="tag">Ambiente técnico</span>
+                  </div>
+                </div>
+                <span class="badge">destaque</span>
+              </div>
+
+              <p class="desc">
+                Experiência em provedor de internet com foco em gestão operacional, acompanhamento de rotinas, leitura por indicadores e
+                uso de tecnologia para dar mais consistência à operação. Esse contexto fortaleceu minha visão sobre atendimento,
+                conectividade, estrutura, suporte e melhoria contínua em ambientes técnicos.
+              </p>
+
+              <div class="kv">
+                <div class="k">
+                  <div class="t">Contexto</div>
+                  <div class="v">Operação com interface técnica</div>
+                </div>
+                <div class="k">
+                  <div class="t">Leitura</div>
+                  <div class="v">Indicadores e acompanhamento</div>
+                </div>
+                <div class="k">
+                  <div class="t">Ação</div>
+                  <div class="v">Organização, processo e resposta</div>
+                </div>
+                <div class="k">
+                  <div class="t">Base gerada</div>
+                  <div class="v">Suporte + visão operacional</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1557,56 +1488,61 @@
         <div class="section-head">
           <div>
             <h2>Competências-chave</h2>
-            <p>Financeiro e compras primeiro. Tecnologia entra como suporte de eficiência.</p>
+            <p>Estruturadas para a área de TI, com equilíbrio entre operação, tecnologia e análise.</p>
           </div>
-          <span class="badge">foco</span>
+          <span class="badge">foco técnico</span>
         </div>
 
         <div class="grid">
           <div class="card col-4 slim">
-            <strong style="font-size:14px;">Compras & Cotações</strong>
+            <strong style="font-size:14px;">Suporte Técnico</strong>
             <p style="margin:8px 0 0;color:var(--muted);font-size:13px;">
-              Organização do fluxo, cotação, comparação e acompanhamento.
+              Atendimento, análise de incidentes, leitura de sintomas e resolução com visão de causa.
             </p>
           </div>
+
           <div class="card col-4 slim">
-            <strong style="font-size:14px;">Financeiro (rotina)</strong>
+            <strong style="font-size:14px;">Infraestrutura & Redes</strong>
             <p style="margin:8px 0 0;color:var(--muted);font-size:13px;">
-              Contas a pagar/receber, tesouraria e controle por período.
+              Base em manutenção, conectividade, ambientes operacionais e suporte a infraestrutura básica.
             </p>
           </div>
+
           <div class="card col-4 slim">
-            <strong style="font-size:14px;">Processos & Indicadores</strong>
+            <strong style="font-size:14px;">Automação & Sistemas</strong>
             <p style="margin:8px 0 0;color:var(--muted);font-size:13px;">
-              Padronização, redução de falhas e métricas de acompanhamento.
+              Python, Django, MySQL e soluções voltadas à organização, produtividade e rastreabilidade.
             </p>
           </div>
 
           <div class="card col-6">
             <div class="section-head" style="margin-bottom:10px;">
-              <h2 style="font-size:15px;">Ferramentas</h2>
+              <h2 style="font-size:15px;">Stack aplicada</h2>
               <span class="badge">prático</span>
             </div>
+
             <div class="list">
               <div class="item">
-                <span class="badge">Excel</span>
+                <span class="badge">Python</span>
                 <div>
-                  <strong>Avançado</strong>
-                  <p>Controles, análises, relatórios e estruturação de base.</p>
+                  <strong>Automação e lógica aplicada</strong>
+                  <p>Scripts, análise e desenvolvimento de soluções com foco em eficiência operacional.</p>
                 </div>
               </div>
+
               <div class="item">
-                <span class="badge">Power BI</span>
+                <span class="badge">MySQL</span>
                 <div>
-                  <strong>Dashboards</strong>
-                  <p>Métricas e visão gerencial com leitura rápida.</p>
+                  <strong>Banco de dados</strong>
+                  <p>Estruturação, consulta e apoio a sistemas com foco em confiabilidade da informação.</p>
                 </div>
               </div>
+
               <div class="item">
-                <span class="badge">Sistemas</span>
+                <span class="badge">Excel / BI</span>
                 <div>
-                  <strong>Django + MySQL</strong>
-                  <p>Soluções para organizar operação e dar rastreabilidade.</p>
+                  <strong>Dados como diferencial</strong>
+                  <p>Leitura operacional, dashboards e apoio à decisão com visão prática de negócio.</p>
                 </div>
               </div>
             </div>
@@ -1614,67 +1550,193 @@
 
           <div class="card col-6">
             <div class="section-head" style="margin-bottom:10px;">
-              <h2 style="font-size:15px;">Diferencial </h2>
+              <h2 style="font-size:15px;">Diferencial</h2>
             </div>
+
             <p style="margin:0;color:var(--muted);font-size:13px;">
-              Eu não uso tecnologia para “aparecer”. Eu uso para <strong>reduzir erro manual</strong>, <strong>padronizar rotina</strong> e
-              <strong>aumentar a confiança dos dados</strong>. Isso fortalece compras, financeiro e operação.
+              Minha atuação combina <strong>suporte</strong>, <strong>processo</strong>, <strong>dados</strong> e <strong>automação</strong>.
+              Isso significa olhar para o problema com profundidade, organizar o fluxo e usar tecnologia de forma prática para reduzir falhas,
+              aumentar previsibilidade e melhorar a rotina.
             </p>
 
             <div class="kv" style="margin-top:12px;">
               <div class="k">
-                <div class="t">Prioridade</div>
-                <div class="v">Compras / Financeiro</div>
+                <div class="t">Base</div>
+                <div class="v">Suporte + operação</div>
               </div>
               <div class="k">
                 <div class="t">Método</div>
-                <div class="v">Processo + dados</div>
+                <div class="v">Processo + leitura analítica</div>
               </div>
               <div class="k">
-                <div class="t">Apoio</div>
-                <div class="v">Excel/BI + automação</div>
+                <div class="t">Ferramentas</div>
+                <div class="v">Python / MySQL / Excel / BI</div>
               </div>
               <div class="k">
                 <div class="t">Entrega</div>
-                <div class="v">Controle e decisão</div>
+                <div class="v">Eficiência com clareza técnica</div>
               </div>
             </div>
           </div>
-        </div><!-- /grid -->
+        </div>
       </div>
     </section>
 
-    <!-- PROJETO EM DESTAQUE -->
+    <!-- PROJETOS -->
     <section id="projetos">
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Projeto em destaque</h2>
-            <p>ERP Fiscal e Gestão Integrada — com visão financeira, permissões, relatórios e dashboards.</p>
+            <h2>Projetos em destaque</h2>
+            <p>Projetos posicionados como soluções tecnológicas, com foco em automação, controle e apoio operacional.</p>
           </div>
-          <span class="badge">case</span>
+          <span class="badge">cases</span>
         </div>
 
         <div class="grid">
+
+          <div class="card col-7">
+          <div class="project">
+            <div class="top">
+              <div>
+                <h3>RaudTraining — Plataforma SaaS para personal trainers e academias</h3>
+                <div class="tags">
+                  <span class="tag">SaaS</span>
+                  <span class="tag">Django</span>
+                  <span class="tag">MySQL</span>
+                  <span class="tag">Automação</span>
+                  <span class="tag">Dashboards</span>
+                  <span class="tag">Relatórios</span>
+                  <span class="tag">Multiusuário</span>
+                </div>
+              </div>
+              <span class="badge">produto real</span>
+            </div>
+
+            <p class="desc">
+              Plataforma web desenvolvida para gestão de personal trainers e academias, com foco em organização de rotinas,
+              acompanhamento de alunos, análise de desempenho e automação de processos operacionais.
+              O projeto une tecnologia, dados e experiência do usuário para gerar mais eficiência e controle no dia a dia.
+            </p>
+
+            <div class="kv">
+              <div class="k">
+                <div class="t">Backend</div>
+                <div class="v">Python + Django</div>
+              </div>
+              <div class="k">
+                <div class="t">Banco</div>
+                <div class="v">MySQL</div>
+              </div>
+              <div class="k">
+                <div class="t">Infra</div>
+                <div class="v">NGINX + Gunicorn + Ubuntu</div>
+              </div>
+              <div class="k">
+                <div class="t">Tipo</div>
+                <div class="v">Sistema SaaS em produção</div>
+              </div>
+            </div>
+
+            <div class="item" style="margin-top:12px;">
+              <span class="badge">Funcionalidades</span>
+              <div>
+                <strong>Gestão completa e acompanhamento</strong>
+                <p>
+                  Controle de alunos, avaliações físicas, treinos, timeline de evolução,
+                  metas, frequência e relatórios com leitura clara da performance.
+                </p>
+              </div>
+            </div>
+
+            <div class="item">
+              <span class="badge">Diferencial</span>
+              <div>
+                <strong>Automação e visão de processo</strong>
+                <p>
+                  Criação rápida de treinos, projeção de desempenho, assistente operacional
+                  e organização de fluxos para reduzir retrabalho e melhorar a rotina do personal.
+                </p>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="card col-5">
+  <div class="section-head" style="margin-bottom:10px;">
+    <h2 style="font-size:15px;">O que o projeto demonstra</h2>
+    <span class="badge">visão de produto</span>
+  </div>
+
+  <div class="list">
+    <div class="item">
+      <span class="badge">Produto</span>
+      <div>
+        <strong>Construção de solução real</strong>
+        <p>
+          Capacidade de transformar uma necessidade de mercado em um sistema funcional,
+          estruturado e com aplicação prática.
+        </p>
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="badge">Arquitetura</span>
+      <div>
+        <strong>Modelagem e organização de sistema</strong>
+        <p>
+          Estruturação de dados, regras de negócio, autenticação e controle de acesso
+          com foco em escalabilidade e consistência.
+        </p>
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="badge">Operação</span>
+      <div>
+        <strong>Visão de uso real</strong>
+        <p>
+          Desenvolvimento orientado à rotina do usuário, com foco em eficiência,
+          clareza e redução de fricção no dia a dia.
+        </p>
+      </div>
+    </div>
+
+    <div class="item">
+      <span class="badge">Evolução</span>
+      <div>
+        <strong>Melhoria contínua</strong>
+        <p>
+          Ajustes constantes, novas funcionalidades e adaptação baseada no uso,
+          comportamento e necessidade do sistema.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
           <div class="card col-7">
             <div class="project">
               <div class="top">
                 <div>
-                  <h3>RaudSistemas — ERP Fiscal e Gestão Integrada</h3>
+                  <h3>RaudSistemas — Plataforma de gestão, automação e rastreabilidade</h3>
                   <div class="tags">
-                    <span class="tag">Financeiro</span>
-                    <span class="tag">Estoque</span>
-                    <span class="tag">Relatórios</span>
+                    <span class="tag">Django</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Automação</span>
                     <span class="tag">Permissões</span>
+                    <span class="tag">Relatórios</span>
                     <span class="tag">Dashboards</span>
                   </div>
                 </div>
-                <span class="badge">Django</span>
+                <span class="badge">projeto principal</span>
               </div>
 
               <p class="desc">
-                Sistema desenvolvido com <strong>Django</strong> e <strong>MySQL</strong> para integrar rotinas essenciais do negócio,
-                com foco em segurança (LGPD), usabilidade e escalabilidade. Inclui modo offline, exportação Excel/PDF e dashboards para suporte à gestão.
+                Sistema desenvolvido com <strong>Django</strong> e <strong>MySQL</strong> para integrar processos, estruturar fluxos,
+                aumentar rastreabilidade e apoiar decisões. O projeto evidencia minha capacidade de transformar necessidades operacionais
+                em solução tecnológica com foco em controle, segurança, usabilidade e escalabilidade.
               </p>
 
               <div class="kv">
@@ -1687,12 +1749,12 @@
                   <div class="v">HTML/CSS + Templates</div>
                 </div>
                 <div class="k">
-                  <div class="t">Dados</div>
-                  <div class="v">Excel / Power BI</div>
+                  <div class="t">Foco</div>
+                  <div class="v">Processo, rastreabilidade e eficiência</div>
                 </div>
                 <div class="k">
-                  <div class="t">Foco</div>
-                  <div class="v">Gestão e rastreabilidade</div>
+                  <div class="t">Valor</div>
+                  <div class="v">Tecnologia aplicada à operação</div>
                 </div>
               </div>
             </div>
@@ -1700,53 +1762,211 @@
 
           <div class="card col-5">
             <div class="section-head" style="margin-bottom:10px;">
-              <h2 style="font-size:15px;">O que resolve</h2>
-              <span class="badge">benefícios</span>
+              <h2 style="font-size:15px;">O que o projeto demonstra</h2>
+              <span class="badge">leitura técnica</span>
             </div>
 
             <div class="list">
               <div class="item">
-                <span class="badge">Vendas</span>
+                <span class="badge">Solução</span>
                 <div>
-                  <strong>Recibos e histórico</strong>
-                  <p>Relatórios exportáveis e visão por período.</p>
+                  <strong>Traduz necessidade em sistema</strong>
+                  <p>Capacidade de estruturar um fluxo real em produto funcional.</p>
                 </div>
               </div>
 
               <div class="item">
-                <span class="badge">Estoque</span>
+                <span class="badge">Automação</span>
                 <div>
-                  <strong>Controle e movimentações</strong>
-                  <p>Filtros por categoria, fornecedor e datas.</p>
+                  <strong>Menos retrabalho, mais consistência</strong>
+                  <p>Uso de tecnologia para organizar rotinas e dar previsibilidade.</p>
                 </div>
               </div>
 
               <div class="item">
-                <span class="badge">Financeiro</span>
+                <span class="badge">Segurança</span>
                 <div>
-                  <strong>Contas a pagar + caixa geral</strong>
-                  <p>Rastreabilidade e organização por fluxo.</p>
+                  <strong>Permissões, auditoria e controle</strong>
+                  <p>Visão de confiabilidade, rastreabilidade e ambiente estruturado.</p>
                 </div>
               </div>
 
               <div class="item">
-                <span class="badge">Permissões</span>
+                <span class="badge">Dados</span>
                 <div>
-                  <strong>Níveis e auditoria</strong>
-                  <p>Controle por usuário e segurança.</p>
-                </div>
-              </div>
-
-              <div class="item">
-                <span class="badge">Relatórios</span>
-                <div>
-                  <strong>Dashboards e métricas</strong>
-                  <p>Visão gerencial com leitura rápida.</p>
+                  <strong>Relatórios e dashboards</strong>
+                  <p>Leitura rápida da operação com foco em decisão e acompanhamento.</p>
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- /grid -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FERRAMENTAS -->
+    <section id="ferramentas">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Ferramentas interativas</h2>
+            <p>Ferramentas simples, úteis e orientadas a problemas reais — reforçando suporte, análise e visão de eficiência.</p>
+          </div>
+          <span class="badge">hands-on</span>
+        </div>
+
+        <div class="tools-grid">
+          <!-- Ferramenta 1 -->
+          <div class="tool-card tool-card--wide">
+            <div class="tool-top">
+              <div>
+                <div class="tool-icon" aria-hidden="true">
+                  <svg class="icon"><use href="#i-terminal"></use></svg>
+                </div>
+                <h3 style="margin-top:12px;">Analisador de Logs Técnico</h3>
+                <p>Cole um trecho de log e obtenha leitura rápida de erros, padrões e sinais de incidente.</p>
+              </div>
+              <span class="badge">diagnóstico</span>
+            </div>
+
+            <div class="tool-body">
+              <div>
+                <label class="tool-label" for="logInput">Trecho do log</label>
+                <textarea id="logInput" class="tool-textarea" placeholder="Ex.:&#10;[error] timeout on endpoint /api/login&#10;[warn] failed DNS lookup&#10;[404] /admin/login"></textarea>
+              </div>
+
+              <div class="tool-actions">
+                <button class="rf-tool-btn primary" type="button" id="analyzeLogBtn">Analisar log</button>
+                <button class="rf-tool-btn" type="button" id="fillLogExampleBtn">Usar exemplo</button>
+              </div>
+
+              <div class="tool-result is-empty" id="logResult">
+                Cole um log e clique em <strong>“Analisar log”</strong>.
+              </div>
+            </div>
+          </div>
+
+          <!-- Ferramenta 2 -->
+          <div class="tool-card">
+            <div class="tool-top">
+              <div>
+                <div class="tool-icon" aria-hidden="true">
+                  <svg class="icon"><use href="#i-shield"></use></svg>
+                </div>
+                <h3 style="margin-top:12px;">Diagnóstico de Incidentes</h3>
+                <p>Selecione sintomas e receba uma hipótese inicial, prioridade e primeiro passo recomendado.</p>
+              </div>
+              <span class="badge">suporte</span>
+            </div>
+
+            <div class="tool-body">
+              <div>
+                <label class="tool-label" for="incidentType">Tipo do sintoma</label>
+                <select id="incidentType" class="tool-select">
+                  <option value="">Selecione...</option>
+                  <option value="internet">Sem internet / conexão instável</option>
+                  <option value="dns">Falha de DNS / site não abre</option>
+                  <option value="system">Sistema lento ou fora do ar</option>
+                  <option value="access">Acesso negado / login falhou</option>
+                  <option value="printer">Impressora / periférico</option>
+                  <option value="network">Rede local / equipamento</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="tool-label" for="incidentImpact">Impacto percebido</label>
+                <select id="incidentImpact" class="tool-select">
+                  <option value="">Selecione...</option>
+                  <option value="low">Baixo</option>
+                  <option value="medium">Médio</option>
+                  <option value="high">Alto</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="tool-label" for="incidentUsers">Usuários afetados</label>
+                <select id="incidentUsers" class="tool-select">
+                  <option value="">Selecione...</option>
+                  <option value="one">Apenas um usuário</option>
+                  <option value="few">Poucos usuários</option>
+                  <option value="many">Vários usuários / setor</option>
+                </select>
+              </div>
+
+              <div class="tool-actions">
+                <button class="rf-tool-btn primary" type="button" id="analyzeIncidentBtn">
+                  Gerar diagnóstico
+                </button>
+
+                <button class="rf-tool-btn" type="button" id="incidentExampleBtn">
+                  Usar exemplo
+                </button>
+
+                <button class="rf-tool-btn" type="button" id="incidentHelpBtn">
+                  Entender como funciona
+                </button>
+              </div>
+
+              <div class="tool-result is-empty" id="incidentResult">
+                Preencha os campos para gerar um diagnóstico inicial.
+              </div>
+            </div>
+          </div>
+
+          <!-- Ferramenta 3 -->
+          <div class="tool-card">
+            <div class="tool-top">
+              <div>
+                <div class="tool-icon" aria-hidden="true">
+                  <svg class="icon"><use href="#i-chart"></use></svg>
+                </div>
+                <h3 style="margin-top:12px;">Otimizador de Rotina Digital</h3>
+                <p>Leitura simples e estratégica para mostrar desperdício operacional e oportunidades de melhoria.</p>
+              </div>
+              <span class="badge">eficiência</span>
+            </div>
+
+            <div class="tool-body">
+              <div>
+                <label class="tool-label" for="routineTasks">Tarefas manuais por dia</label>
+                <input id="routineTasks" class="tool-input" type="number" min="0" placeholder="Ex.: 18">
+              </div>
+
+              <div>
+                <label class="tool-label" for="routineHours">Horas gastas com rotinas repetitivas por semana</label>
+                <input id="routineHours" class="tool-input" type="number" min="0" placeholder="Ex.: 10">
+              </div>
+
+              <div>
+                <label class="tool-label" for="routineLevel">Nível de organização atual</label>
+                <select id="routineLevel" class="tool-select">
+                  <option value="">Selecione...</option>
+                  <option value="low">Baixo</option>
+                  <option value="medium">Médio</option>
+                  <option value="high">Alto</option>
+                </select>
+              </div>
+
+            <div class="tool-actions">
+              <button class="rf-tool-btn primary" type="button" id="analyzeRoutineBtn">
+                Avaliar rotina
+              </button>
+
+              <button class="rf-tool-btn" type="button" id="routineExampleBtn">
+                Usar exemplo
+              </button>
+
+              <button class="rf-tool-btn" type="button" id="routineHelpBtn">
+                Entender como funciona
+              </button>
+            </div>
+
+              <div class="tool-result is-empty" id="routineResult">
+                Preencha os dados para obter uma leitura executiva da rotina.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1756,7 +1976,7 @@
         <div class="section-head">
           <div>
             <h2>Certificados</h2>
-            <p>Filtre por área e pesquise rapidamente. (Excel e gestão ficam em evidência sem esconder tecnologia.)</p>
+            <p>Base técnica organizada por área, reforçando evolução prática em tecnologia.</p>
           </div>
           <span class="badge">formação</span>
         </div>
@@ -1764,276 +1984,39 @@
         <div class="toolbar">
           <div class="search" role="search">
             <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
-            <input id="certSearch" type="search" placeholder="Pesquisar certificado (ex.: Excel, Java, segurança, rede...)" aria-label="Pesquisar certificado" />
+            <input id="certSearch" type="search" placeholder="Pesquisar certificado (ex.: Python, rede, segurança, Excel...)" aria-label="Pesquisar certificado" />
           </div>
 
           <div class="chiprow" aria-label="Filtros de certificados">
             <button class="chip" type="button" data-filter="todos" aria-pressed="true">Todos</button>
-            <button class="chip" type="button" data-filter="gestao">Gestão/Financeiro</button>
-            <button class="chip" type="button" data-filter="excel">Excel</button>
-            <button class="chip" type="button" data-filter="dev">Dev</button>
             <button class="chip" type="button" data-filter="infra">Infra/Redes</button>
             <button class="chip" type="button" data-filter="seg">Segurança</button>
+            <button class="chip" type="button" data-filter="dev">Dev</button>
+            <button class="chip" type="button" data-filter="dados">Dados</button>
+            <button class="chip" type="button" data-filter="excel">Excel</button>
           </div>
         </div>
 
         <div class="grid">
           <div class="card col-12">
             <div id="certWrap" class="cert-grid">
-              <!-- Certificados (preenchidos via JS) -->
+              <!-- Certificados via JS -->
             </div>
 
             <div class="item" style="margin-top:12px; align-items:center;">
-              <span class="badge">Nota</span>
+              <span class="badge">Leitura</span>
               <div>
-                <strong>Como isso ajuda no financeiro?</strong>
+                <strong>Formação com aplicação prática</strong>
                 <p>
-                  Excel avançado, processos e dados sustentam rotinas financeiras, compras e controle. A parte técnica reforça sua capacidade de estruturar, automatizar e manter consistência.
+                  A combinação entre suporte, infraestrutura, desenvolvimento, dados e Excel fortalece uma atuação técnica mais completa,
+                  com boa leitura operacional e foco em solução.
                 </p>
               </div>
             </div>
           </div>
-        </div><!-- /grid -->
+        </div>
       </div>
     </section>
-
-
-<!-- Calculadora -->
-<section class="rf-calc" id="calc-desperdicio">
-  <div class="rf-calc__wrap">
-    <div class="rf-calc__head">
-      <span class="rf-calc__kicker">
-        <span class="rf-calc__dot" aria-hidden="true"></span>
-        Calculadora analítica
-      </span>
-      <button class="rf-calc__helpBtn" type="button" id="rfOpenHelp" aria-haspopup="dialog" aria-controls="rfHelpModal">
-         Como funciona
-        </button>
-<h2 class="rf-calc__title rf-title--withIcon">
-  <span class="rf-title__icon" aria-hidden="true">
-    <!-- cole aqui o SVG -->
-    <svg class="rf-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M7.5 9.5h2m-2 3h2m-2 3h2M13.5 9.5h3m-3 3h3m-3 3h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M6.25 4.75h11.5A1.5 1.5 0 0 1 19.25 6.25v11.5a1.5 1.5 0 0 1-1.5 1.5H6.25a1.5 1.5 0 0 1-1.5-1.5V6.25a1.5 1.5 0 0 1 1.5-1.5Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-      <path d="M7 7h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M16.8 6.9l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-    </svg>
-  </span>
-  Calculadora de Desperdício Invisível
-</h2>
-      <p class="rf-calc__sub">
-        Simule o impacto financeiro de retrabalho, desperdício e tarefas manuais no mês — com leitura executiva.
-      </p>
-    </div>
-
-    <div class="rf-calc__grid">
-      <!-- Form -->
-      <form class="rf-calc__card" id="rfForm" autocomplete="off">
-        <div class="rf-calc__row">
-          <label class="rf-calc__label" for="gasto">Valor mensal de compras (R$)</label>
-          <input class="rf-calc__input" id="gasto" name="gasto" inputmode="decimal" placeholder="Ex.: 50.000" required>
-          <small class="rf-calc__hint">Valor total aproximado gasto com compras no mês.</small>
-        </div>
-
-        <div class="rf-calc__row">
-          <label class="rf-calc__label" for="perc">Desperdício / retrabalho estimado (%)</label>
-          <input class="rf-calc__input" id="perc" name="perc" inputmode="decimal" placeholder="Ex.: 3" required>
-          <small class="rf-calc__hint">Ex.: perdas, compras erradas, correções, refações e falhas de processo.</small>
-        </div>
-
-        <div class="rf-calc__row">
-          <label class="rf-calc__label" for="horas">Horas mensais em tarefas manuais (h)</label>
-          <input class="rf-calc__input" id="horas" name="horas" inputmode="decimal" placeholder="Ex.: 40" required>
-          <small class="rf-calc__hint">Tempo gasto em planilhas repetitivas, conferências e retrabalho.</small>
-        </div>
-
-        <div class="rf-calc__row">
-          <label class="rf-calc__label" for="custoHora">Custo médio por hora (R$)</label>
-          <input class="rf-calc__input" id="custoHora" name="custoHora" inputmode="decimal" placeholder="Ex.: 25" required>
-          <small class="rf-calc__hint">Pode ser salário + encargos aproximados, ou custo interno estimado.</small>
-        </div>
-
-        <div class="rf-calc__row rf-calc__split">
-          <div>
-            <label class="rf-calc__label" for="taxaRecuperavel">Parte recuperável das horas (%)</label>
-            <input class="rf-calc__input" id="taxaRecuperavel" name="taxaRecuperavel" inputmode="decimal" placeholder="Ex.: 35" value="35" required>
-            <small class="rf-calc__hint">Quanto do tempo manual pode ser reduzido com processo/automação.</small>
-          </div>
-
-          <div class="rf-calc__toggle">
-            <span class="rf-calc__label">Modo conservador</span>
-            <button class="rf-calc__switch" type="button" id="conservador" aria-pressed="true">
-              <span class="rf-calc__switchDot" aria-hidden="true"></span>
-              <span class="rf-calc__switchText">Ativo</span>
-            </button>
-            <small class="rf-calc__hint">Reduz o impacto estimado para evitar exageros.</small>
-          </div>
-        </div>
-
-        <div class="rf-calc__actions">
-        <button class="rf-calc__btn rf-calc__btn--primary rf-btn--icon" type="submit">
-          <span class="rf-btn__ico" aria-hidden="true">
-            <svg class="rf-ico rf-ico--btn" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M5 16.5V7.5M5 16.5l3-2.2m-3 2.2l3 1.8m4-1.1V9.5m0 7.7l3-2.3m-3 2.3l3 1.7M19 18.2V5.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          Analisar impacto
-          <span class="rf-calc__btnIcon" aria-hidden="true">→</span>
-        </button>
-          <button class="rf-calc__btn" type="button" id="limpar">Limpar</button>
-        </div>
-
-        <div class="rf-calc__note">
-          <strong>Nota:</strong> esta simulação é um modelo simples para demonstrar leitura financeira e tomada de decisão. Ajuste conforme a realidade.
-        </div>
-      </form>
-
-      <!-- Results -->
-      <aside class="rf-calc__card rf-calc__card--result" aria-live="polite">
-        <div class="rf-calc__resultTop">
-          <span class="rf-calc__badge">Resumo</span>
-          <span class="rf-calc__badge rf-calc__badge--gold">Executivo</span>
-        </div>
-
-        <div class="rf-calc__big" id="perdaMes">R$ 0</div>
-        <div class="rf-calc__small" id="perdaAno">R$ 0 / ano</div>
-
-        <div class="rf-calc__divider"></div>
-
-        <div class="rf-calc__kvs">
-          <div class="rf-calc__kv">
-            <div class="rf-calc__kvK">Perda por desperdício</div>
-            <div class="rf-calc__kvV" id="kDesperdicio">R$ 0</div>
-          </div>
-          <div class="rf-calc__kv">
-            <div class="rf-calc__kvK">Custo do tempo manual (recuperável)</div>
-            <div class="rf-calc__kvV" id="kTempo">R$ 0</div>
-          </div>
-          <div class="rf-calc__kv">
-            <div class="rf-calc__kvK">Horas recuperáveis (estimado)</div>
-            <div class="rf-calc__kvV" id="kHoras">0 h</div>
-          </div>
-        </div>
-
-        <div class="rf-calc__divider"></div>
-
-        <div class="rf-calc__insight" id="insight">
-          Preencha os campos e clique em <strong>“Analisar impacto”</strong>.
-        </div>
-
-        <div class="rf-calc__resultActions">
-          <button class="rf-calc__btn rf-calc__btn--ghost" type="button" id="copiarResumo">Copiar resumo</button>
-          <button class="rf-calc__btn rf-calc__btn--ghost" type="button" id="usarExemplo">Usar exemplo</button>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- ====== 2) MODAL (cole uma vez, de preferência logo após a seção da calculadora) ====== -->
-<div class="rf-modal" id="rfHelpModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="rfHelpTitle">
-  <div class="rf-modal__backdrop" data-close="true"></div>
-
-  <div class="rf-modal__panel" role="document">
-    <div class="rf-modal__head">
-      <div>
-        <div class="rf-modal__kicker">
-          <span class="rf-modal__dot" aria-hidden="true"></span>
-          Manual rápido
-        </div>
-        <h3 class="rf-modal__title" id="rfHelpTitle">Como usar a Calculadora de Desperdício Invisível</h3>
-      </div>
-
-      <button class="rf-modal__close" type="button" id="rfCloseHelp" aria-label="Fechar">
-        ✕
-      </button>
-    </div>
-
-    <div class="rf-modal__body">
-      <div class="rf-modal__grid">
-        <div class="rf-modal__card">
-          <strong class="rf-modal__h">O que preencher</strong>
-
-          <ul class="rf-modal__list">
-            <li><strong>Compras/mês (R$):</strong> total aproximado de compras no mês.</li>
-            <li><strong>Desperdício (%):</strong> perdas por falhas, urgências, compras erradas e retrabalho.</li>
-            <li><strong>Horas manuais (h):</strong> tempo gasto em conferências, planilhas repetitivas e correções.</li>
-            <li><strong>Custo/hora (R$):</strong> custo médio do tempo (salário + encargos aproximados).</li>
-            <li><strong>Horas recuperáveis (%):</strong> quanto do tempo manual pode ser reduzido com processo/organização.</li>
-          </ul>
-
-          <div class="rf-modal__tip">
-            <strong>Dica:</strong> comece com <em>modo conservador</em> ativo para uma estimativa defensável.
-          </div>
-        </div>
-
-        <div class="rf-modal__card">
-          <strong class="rf-modal__h">Como interpretar</strong>
-
-          <div class="rf-modal__bullets">
-            <div class="rf-modal__bullet">
-              <span class="rf-modal__bTag">Mensal</span>
-              <div>
-                <strong>Perda estimada/mês</strong>
-                <div class="rf-modal__muted">Custo oculto somando desperdício + tempo recuperável.</div>
-              </div>
-            </div>
-
-            <div class="rf-modal__bullet">
-              <span class="rf-modal__bTag">Anual</span>
-              <div>
-                <strong>Perda estimada/ano</strong>
-                <div class="rf-modal__muted">Ajuda a priorizar ações e justificar melhorias.</div>
-              </div>
-            </div>
-
-            <div class="rf-modal__bullet">
-              <span class="rf-modal__bTag">Direção</span>
-              <div>
-                <strong>Leitura executiva</strong>
-                <div class="rf-modal__muted">Sugere onde atuar primeiro: processo, conferência e rastreabilidade.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rf-modal__tip">
-            <strong>Uso prático:</strong> teste cenários (ex.: 3% → 2%) e veja o impacto do ganho de processo.
-          </div>
-        </div>
-      </div>
-
-      <div class="rf-modal__footer">
-        <button class="rf-calc__btn rf-calc__btn--primary" type="button" id="rfTryExample">
-          Usar exemplo agora <span class="rf-calc__btnIcon" aria-hidden="true">→</span>
-        </button>
-        <button class="rf-calc__btn" type="button" id="rfCloseHelp2">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- ===== DEMO MODAL: Cotação Inteligente ===== -->
-  <div class="rf-demoModal" id="cotacaoModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Demo Cotação Inteligente">
-    <div class="rf-demoModal__backdrop" data-close="true"></div>
-
-    <div class="rf-demoModal__panel" role="document">
-      <div class="rf-demoModal__head">
-        <div>
-          <h3 class="rf-demoModal__title">Cotação Inteligente</h3>
-          <div class="rf-demoModal__sub">Preencha e use “Comparar / PDF / Decisão” dentro da ferramenta.</div>
-        </div>
-
-        <div class="rf-demoModal__actions">
-          <a class="rf-demoBtn ghost" id="cotacaoFull" href="demos/cotacao.html" target="_blank" rel="noopener">Tela cheia</a>
-          <button class="rf-demoBtn" type="button" id="closeCotacaoDemo">Fechar</button>
-        </div>
-      </div>
-
-      <div class="rf-demoModal__body">
-        <iframe id="cotacaoFrame" title="Demo Cotação Inteligente" loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
 
     <!-- CONTATO -->
     <section id="contato">
@@ -2041,7 +2024,7 @@
         <div class="section-head">
           <div>
             <h2>Contato</h2>
-            <p>Curto, profissional e direto.</p>
+            <p>Direto, profissional e alinhado ao posicionamento em tecnologia.</p>
           </div>
           <span class="badge">CTA</span>
         </div>
@@ -2053,7 +2036,7 @@
                 <span class="badge">E-mail</span>
                 <div style="flex:1;">
                   <strong class="mono" id="emailText">raudiney-@hotmail.com</strong>
-                  <p>Envie vaga, desafio ou convite para conversa. Respondo rápido.</p>
+                  <p>Para vagas, projetos, desafios ou conversa sobre oportunidades em tecnologia.</p>
                 </div>
                 <button class="btn" type="button" id="copyEmailBtn2" data-email="raudiney-@hotmail.com">Copiar</button>
               </div>
@@ -2062,7 +2045,7 @@
                 <span class="badge">LinkedIn</span>
                 <div style="flex:1;">
                   <strong>Raudiney Farias</strong>
-                  <p>Substitua pelo link real do seu perfil.</p>
+                  <p>Perfil profissional com foco em tecnologia, suporte, automação e análise aplicada.</p>
                 </div>
                 <a class="btn" href="https://www.linkedin.com/in/raudiney-farias-337247237/" target="_blank" rel="noreferrer">
                   <svg class="icon" aria-hidden="true"><use href="#i-link"></use></svg>
@@ -2075,11 +2058,12 @@
           <div class="card col-4">
             <strong style="font-size:14px;">Mensagem final</strong>
             <p style="margin:8px 0 0;color:var(--muted);font-size:13px;">
-              Atuação focada em <strong>financeiro</strong> e em <strong>compras</strong> com foco em controle, análise e processos — entregando organização e previsibilidade.
+              Profissional direcionado para <strong>Suporte Técnico</strong>, <strong>Infraestrutura</strong>, <strong>Automação</strong> e
+              <strong>Análise de Dados aplicada</strong>, com foco em resolver problemas e gerar eficiência com clareza técnica.
             </p>
 
             <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
-              <a class="btn primary" href="mailto:SEUEMAIL@DOMINIO.COM?subject=Oportunidade%20-%20Compras%20/%20Financeiro&body=Ol%C3%A1%20Raudiney,%0D%0A%0D%0AQuero%20conversar%20sobre%20uma%20oportunidade.%0D%0A%0D%0A">
+              <a class="btn primary" href="mailto:SEUEMAIL@DOMINIO.COM?subject=Oportunidade%20-%20Tecnologia&body=Ol%C3%A1%20Raudiney,%0D%0A%0D%0AGostaria%20de%20conversar%20sobre%20uma%20oportunidade%20na%20%C3%A1rea%20de%20tecnologia.%0D%0A%0D%0A">
                 <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
                 Enviar e-mail
               </a>
@@ -2090,484 +2074,753 @@
       </div>
     </section>
 
+
+
+<!-- Modal Explicação Rotina -->
+
+<div class="rf-modal" id="routineHelpModal" aria-hidden="true">
+  <div class="rf-modal__overlay" data-close="routineHelpModal"></div>
+
+  <div class="rf-modal__card" role="dialog" aria-modal="true" aria-labelledby="routineHelpTitle">
+    <button class="rf-modal__close" data-close="routineHelpModal" aria-label="Fechar">✕</button>
+
+    <div class="rf-modal__kicker">
+      <span class="rf-modal__dot"></span>
+      Otimizador de Rotina Digital
+    </div>
+
+    <h3 class="rf-modal__title" id="routineHelpTitle">Como essa ferramenta funciona</h3>
+
+    <p class="rf-modal__text">
+      Esta ferramenta faz uma leitura simples da rotina operacional para identificar sinais de excesso de tarefas manuais,
+      tempo repetitivo e oportunidade de ganho com organização, padronização e automação.
+    </p>
+
+    <div class="rf-modal__block">
+      <strong>O que ela analisa</strong>
+      <ul>
+        <li>Quantidade de tarefas manuais por dia</li>
+        <li>Horas gastas por semana em atividades repetitivas</li>
+        <li>Nível atual de organização da rotina</li>
+      </ul>
+    </div>
+
+    <div class="rf-modal__block">
+      <strong>O que ela entrega</strong>
+      <ul>
+        <li>Nível estimado de eficiência</li>
+        <li>Score da rotina</li>
+        <li>Tempo repetitivo estimado por mês</li>
+        <li>Sugestões práticas de melhoria</li>
+      </ul>
+    </div>
+
+    <div class="rf-modal__block">
+      <strong>Objetivo</strong>
+      <p>
+        Demonstrar como tecnologia, processo e automação podem reduzir retrabalho e gerar eficiência operacional,
+        traduzindo uma leitura técnica para algo compreensível tanto por gestores quanto por recrutadores.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Explicação Ferramenta -->
+<div class="rf-modal" id="incidentHelpModal" aria-hidden="true">
+  <div class="rf-modal__overlay" data-close="incidentHelpModal"></div>
+
+  <div class="rf-modal__card" role="dialog" aria-modal="true">
+    <button class="rf-modal__close" data-close="incidentHelpModal">✕</button>
+
+    <div class="rf-modal__kicker">
+      <span class="rf-modal__dot"></span>
+      Diagnóstico de Incidentes
+    </div>
+
+    <h3 class="rf-modal__title">Como essa ferramenta funciona</h3>
+
+    <p class="rf-modal__text">
+      Esta ferramenta simula uma triagem inicial de suporte técnico, baseada em três fatores principais:
+      tipo do problema, impacto e quantidade de usuários afetados.
+    </p>
+
+    <div class="rf-modal__block">
+      <strong>O que ela analisa</strong>
+      <ul>
+        <li>Tipo do incidente (rede, sistema, acesso, etc.)</li>
+        <li>Nível de impacto na operação</li>
+        <li>Quantidade de usuários afetados</li>
+      </ul>
+    </div>
+
+    <div class="rf-modal__block">
+      <strong>O que ela entrega</strong>
+      <ul>
+        <li>Área provável do problema</li>
+        <li>Prioridade de atendimento</li>
+        <li>Primeiro passo técnico recomendado</li>
+        <li>Direção de escalonamento</li>
+      </ul>
+    </div>
+
+    <div class="rf-modal__block">
+      <strong>Objetivo</strong>
+      <p>
+        Demonstrar uma abordagem estruturada de suporte técnico, com foco em análise rápida,
+        organização do problema e definição de prioridade — algo essencial em ambientes reais de TI.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
     <footer>
       <div class="container">
         <div class="footer-row">
           <div>© <span id="year"></span> • Raudiney Farias</div>
-          <div class="mono">compras • financeiro • dados</div>
+          <div class="mono">suporte • infraestrutura • automação • dados</div>
         </div>
       </div>
     </footer>
   </main>
 
-  <script>
-    // ===== Ano automático
-    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ===== Tema (claro/escuro)
-    (function initTheme(){
-      const saved = localStorage.getItem("rf_theme");
-      if(saved && saved !== "light") document.documentElement.setAttribute("data-theme", saved);
-      updateThemeIconLabel();
-    })();
 
-    function updateThemeIconLabel(){
-      const theme = document.documentElement.getAttribute("data-theme") || "light";
-      const btn = document.getElementById("themeBtn");
-      const label = document.getElementById("themeLabel");
-      const iconUse = btn.querySelector("use");
-      if(theme === "dark"){
-        label.textContent = "Claro";
-        iconUse.setAttribute("href", "#i-sun");
-      } else {
-        label.textContent = "Escuro";
-        iconUse.setAttribute("href", "#i-moon");
-      }
+
+</body>
+<script>
+  // ===== Ano automático
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ===== Tema (claro/escuro)
+  (function initTheme(){
+    const saved = localStorage.getItem("rf_theme");
+    if(saved && saved !== "light"){
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+    updateThemeIconLabel();
+  })();
+
+  function updateThemeIconLabel(){
+    const theme = document.documentElement.getAttribute("data-theme") || "light";
+    const btn = document.getElementById("themeBtn");
+    const label = document.getElementById("themeLabel");
+    if(!btn || !label) return;
+
+    const iconUse = btn.querySelector("use");
+    if(theme === "dark"){
+      label.textContent = "Claro";
+      if(iconUse) iconUse.setAttribute("href", "#i-sun");
+    } else {
+      label.textContent = "Escuro";
+      if(iconUse) iconUse.setAttribute("href", "#i-moon");
+    }
+  }
+
+  document.getElementById("themeBtn")?.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme") || "light";
+    const next = current === "dark" ? "light" : "dark";
+
+    if(next === "light"){
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
     }
 
-    document.getElementById("themeBtn").addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme") || "light";
-      const next = current === "dark" ? "light" : "dark";
-      if(next === "light") document.documentElement.removeAttribute("data-theme");
-      else document.documentElement.setAttribute("data-theme", "dark");
-      localStorage.setItem("rf_theme", next);
-      updateThemeIconLabel();
+    localStorage.setItem("rf_theme", next);
+    updateThemeIconLabel();
+  });
+
+  // ===== Copiar e-mail
+  function wireCopy(btnId){
+    const btn = document.getElementById(btnId);
+    if(!btn) return;
+
+    btn.addEventListener("click", async () => {
+      const email = btn.getAttribute("data-email") || "SEUEMAIL@DOMINIO.COM";
+
+      try{
+        await navigator.clipboard.writeText(email);
+        const old = btn.textContent;
+        btn.textContent = "Copiado ✓";
+        setTimeout(() => {
+          btn.textContent = old;
+        }, 1200);
+      } catch(e){
+        prompt("Copie o e-mail:", email);
+      }
     });
+  }
 
-    // ===== Copiar e-mail
-    function wireCopy(btnId){
-      const btn = document.getElementById(btnId);
-      if(!btn) return;
-      btn.addEventListener("click", async () => {
-        const email = btn.getAttribute("data-email") || "SEUEMAIL@DOMINIO.COM";
-        try{
-          await navigator.clipboard.writeText(email);
-          const old = btn.textContent;
-          btn.textContent = "Copiado ✓";
-          setTimeout(() => btn.textContent = old, 1200);
-        }catch(e){
-          prompt("Copie o e-mail:", email);
+  wireCopy("copyEmailBtn");
+  wireCopy("copyEmailBtn2");
+
+  // ===== Highlight do menu
+  (function initMenuHighlight(){
+    const links = Array.from(document.querySelectorAll('nav.menu a[href^="#"]'));
+    const sections = links
+      .map(link => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    if(!links.length || !sections.length) return;
+
+    function setActive(){
+      const y = window.scrollY + 140;
+      let activeIndex = 0;
+
+      for(let i = 0; i < sections.length; i++){
+        if(sections[i].offsetTop <= y){
+          activeIndex = i;
+        }
+      }
+
+      links.forEach((link, index) => {
+        if(index === activeIndex){
+          link.style.color = "var(--text)";
+          link.style.background = "var(--accent-soft)";
+        } else {
+          link.style.color = "var(--muted)";
+          link.style.background = "transparent";
         }
       });
     }
-    wireCopy("copyEmailBtn");
-    wireCopy("copyEmailBtn2");
 
-    // ===== Highlight do menu (quando visível)
-    const links = Array.from(document.querySelectorAll('nav.menu a[href^="#"]'));
-    const sections = links.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
-
-    const setActive = () => {
-      if(!links.length) return;
-      const y = window.scrollY + 120;
-      let idx = 0;
-      for(let i=0;i<sections.length;i++){
-        if(sections[i].offsetTop <= y) idx = i;
-      }
-      links.forEach((a,i) => {
-        if(i === idx){
-          a.style.color = "var(--text)";
-          a.style.background = "color-mix(in srgb, var(--green-100) 70%, transparent)";
-        }else{
-          a.style.color = "var(--muted)";
-          a.style.background = "transparent";
-        }
-      });
-    };
     window.addEventListener("scroll", setActive, { passive: true });
     setActive();
+  })();
 
-    // ===== Certificados (dados + filtros + busca)
+  // ===== Utilidades
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function formatHours(value){
+    return `${Number(value).toFixed(1).replace(".", ",")} h`;
+  }
+
+  // ===== Certificados
+  (function initCertificates(){
     const certs = [
-      // Gestão/Financeiro e Excel (prioridade visual)
-      { name: "Excel Básico", org: "Fundação Bradesco", tags: ["excel","gestao"] },
-      { name: "Excel Intermediário", org: "Fundação Bradesco", tags: ["excel","gestao"] },
-      { name: "Excel Avançado", org: "Fundação Bradesco", tags: ["excel","gestao"] },
-
-      // Formação / Técnico
       { name: "Técnico em Manutenção e Suporte em Informática", org: "IFPB", tags: ["infra"] },
-      { name: "Gestão Financeira (Cursando)", org: "Uniasselvi", tags: ["gestao"] },
+      { name: "Por dentro da Segurança Cibernética", org: "SENAI SP", tags: ["seg", "infra"] },
+      { name: "Introdução a Infraestrutura Web", org: "Ada Tech", tags: ["infra"] },
+      { name: "Rede e Sistemas", org: "Ada Tech", tags: ["infra"] },
+      { name: "Mikrotik básico", org: "Rede Brasil", tags: ["infra"] },
 
-      // Fundação Bradesco / Dev básico
-      { name: "Criando um site simples com HTML, CSS e JavaScript", org: "Fundação Bradesco", tags: ["dev"] },
-
-      // Curso em Vídeo
+      { name: "Python — Noções básicas", org: "Ada Tech", tags: ["dev"] },
       { name: "Algoritmos", org: "Curso em Vídeo", tags: ["dev"] },
-
-      // Senai
-      { name: "Por dentro da segurança cibernética", org: "SENAI SP", tags: ["seg","infra"] },
-
-      // Ada Tech
+      { name: "Criando um site simples com HTML, CSS e JavaScript", org: "Fundação Bradesco", tags: ["dev"] },
       { name: "HTML", org: "Ada Tech", tags: ["dev"] },
       { name: "CSS", org: "Ada Tech", tags: ["dev"] },
-      { name: "Figma para Dev’s", org: "Ada Tech", tags: ["dev"] },
       { name: "Git e Versionamento", org: "Ada Tech", tags: ["dev"] },
-      { name: "Introdução a Infraestrutura Web", org: "Ada Tech", tags: ["infra"] },
-      { name: "Introdução a NodeJS", org: "Ada Tech", tags: ["dev"] },
-      { name: "Lógica de programação em JavaScript", org: "Ada Tech", tags: ["dev"] },
-      { name: "Lógica de programação Intermediária em JavaScript", org: "Ada Tech", tags: ["dev"] },
       { name: "Introdução ao Java", org: "Ada Tech", tags: ["dev"] },
       { name: "Programação Orientada a Objetos em Java", org: "Ada Tech", tags: ["dev"] },
       { name: "Design Patterns em Java", org: "Ada Tech", tags: ["dev"] },
-      { name: "Python — Noções básicas", org: "Ada Tech", tags: ["dev"] },
-      { name: "Rede e sistemas", org: "Ada Tech", tags: ["infra"] },
+      { name: "Introdução a NodeJS", org: "Ada Tech", tags: ["dev"] },
 
-      // Mikrotik
-      { name: "Mikrotik básico", org: "Rede Brasil", tags: ["infra"] },
+      { name: "Excel Básico", org: "Fundação Bradesco", tags: ["excel", "dados"] },
+      { name: "Excel Intermediário", org: "Fundação Bradesco", tags: ["excel", "dados"] },
+      { name: "Excel Avançado", org: "Fundação Bradesco", tags: ["excel", "dados"] },
+      { name: "Figma para Dev’s", org: "Ada Tech", tags: ["dev"] }
     ];
 
     const wrap = document.getElementById("certWrap");
     const searchInput = document.getElementById("certSearch");
     const chips = Array.from(document.querySelectorAll(".chip[data-filter]"));
+
+    if(!wrap || !searchInput || !chips.length) return;
+
     let activeFilter = "todos";
 
-    function renderCerts(){
-      const q = (searchInput.value || "").trim().toLowerCase();
+    function getLabel(tags){
+      if(tags.includes("infra")) return "Infra";
+      if(tags.includes("seg")) return "Segurança";
+      if(tags.includes("excel")) return "Excel";
+      if(tags.includes("dados")) return "Dados";
+      return "Dev";
+    }
 
-      const filtered = certs.filter(c => {
-        const inFilter = activeFilter === "todos" ? true : c.tags.includes(activeFilter);
-        const inSearch = !q ? true : (c.name.toLowerCase().includes(q) || c.org.toLowerCase().includes(q));
-        return inFilter && inSearch;
+    function renderCerts(){
+      const query = (searchInput.value || "").trim().toLowerCase();
+
+      const filtered = certs.filter(cert => {
+        const matchesFilter = activeFilter === "todos" ? true : cert.tags.includes(activeFilter);
+        const matchesSearch = !query
+          ? true
+          : cert.name.toLowerCase().includes(query) || cert.org.toLowerCase().includes(query);
+
+        return matchesFilter && matchesSearch;
       });
 
-      wrap.innerHTML = filtered.map(c => {
-        const label = c.tags.includes("excel") ? "Excel" :
-                      c.tags.includes("gestao") ? "Gestão" :
-                      c.tags.includes("seg") ? "Segurança" :
-                      c.tags.includes("infra") ? "Infra" : "Dev";
-
-        return `
-          <div class="cert" data-tags="${c.tags.join(",")}">
-            <div>
-              <div class="name">${escapeHtml(c.name)}</div>
-              <div class="org">${escapeHtml(c.org)}</div>
-            </div>
-            <div class="meta">
-              <span class="badge">${label}</span>
-            </div>
-          </div>
-        `;
-      }).join("");
-
-      if(filtered.length === 0){
+      if(!filtered.length){
         wrap.innerHTML = `
           <div class="item" style="grid-column:1 / -1;">
             <span class="badge">Ops</span>
             <div>
               <strong>Nenhum certificado encontrado</strong>
-              <p>Tente outra palavra-chave ou selecione “Todos”.</p>
+              <p>Tente outra palavra-chave ou selecione outro filtro.</p>
             </div>
           </div>
         `;
+        return;
       }
+
+      wrap.innerHTML = filtered.map(cert => `
+        <div class="cert" data-tags="${cert.tags.join(",")}">
+          <div>
+            <div class="name">${escapeHtml(cert.name)}</div>
+            <div class="org">${escapeHtml(cert.org)}</div>
+          </div>
+          <div class="meta">
+            <span class="badge">${getLabel(cert.tags)}</span>
+          </div>
+        </div>
+      `).join("");
     }
 
-    chips.forEach(btn => {
-      btn.addEventListener("click", () => {
-        activeFilter = btn.getAttribute("data-filter");
-        chips.forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+    chips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        activeFilter = chip.getAttribute("data-filter") || "todos";
+        chips.forEach(btn => {
+          btn.setAttribute("aria-pressed", String(btn === chip));
+        });
         renderCerts();
       });
     });
 
-    searchInput.addEventListener("input", () => renderCerts());
-
-    function escapeHtml(str){
-      return String(str)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-    }
+    searchInput.addEventListener("input", renderCerts);
 
     renderCerts();
+  })();
 
-     (function(){
-    const form = document.getElementById("rfForm");
-    const btnClear = document.getElementById("limpar");
-    const btnExample = document.getElementById("usarExemplo");
-    const btnCopy = document.getElementById("copiarResumo");
-    const toggle = document.getElementById("conservador");
+  // ===== Ferramenta 1: Analisador de Logs Técnico
+  (function initLogAnalyzer(){
+    const input = document.getElementById("logInput");
+    const analyzeBtn = document.getElementById("analyzeLogBtn");
+    const exampleBtn = document.getElementById("fillLogExampleBtn");
+    const result = document.getElementById("logResult");
 
-    const outPerdaMes = document.getElementById("perdaMes");
-    const outPerdaAno = document.getElementById("perdaAno");
-    const kDesperdicio = document.getElementById("kDesperdicio");
-    const kTempo = document.getElementById("kTempo");
-    const kHoras = document.getElementById("kHoras");
-    const insight = document.getElementById("insight");
+    if(!input || !analyzeBtn || !exampleBtn || !result) return;
 
-    const fields = {
-      gasto: document.getElementById("gasto"),
-      perc: document.getElementById("perc"),
-      horas: document.getElementById("horas"),
-      custoHora: document.getElementById("custoHora"),
-      taxaRecuperavel: document.getElementById("taxaRecuperavel"),
+    const sampleLog = `[error] timeout on endpoint /api/login
+[warn] failed DNS lookup for app.interno.local
+[404] /admin/login
+[500] /api/users
+[error] database connection refused
+[403] /painel
+[warn] packet loss detected on gateway
+[404] /favicon.ico
+[500] /api/users`;
+
+    function renderEmpty(){
+      result.className = "tool-result is-empty";
+      result.innerHTML = `Cole um log e clique em <strong>“Analisar log”</strong>.`;
+    }
+
+    function extractMatches(text, regex){
+      return Array.from(text.matchAll(regex)).map(match => match[0]);
+    }
+
+    function countOccurrences(list){
+      return list.reduce((acc, item) => {
+        acc[item] = (acc[item] || 0) + 1;
+        return acc;
+      }, {});
+    }
+
+    function getTopEntries(map, limit = 3){
+      return Object.entries(map)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, limit);
+    }
+
+    function detectInsight(errors, warns, timeouts, serverErrors, authIssues){
+      if(serverErrors >= 2 && errors >= 3){
+        return "Há sinais de instabilidade do sistema ou falha em serviço backend. Vale verificar aplicação, banco e disponibilidade do servidor.";
+      }
+
+      if(timeouts >= 1 && warns >= 2){
+        return "O log sugere lentidão ou falha de comunicação. A primeira checagem deve mirar rede, DNS e resposta entre serviços.";
+      }
+
+      if(authIssues >= 2){
+        return "Existem sinais de falha de acesso ou tentativa de recurso restrito. Vale revisar credenciais, permissões e autenticação.";
+      }
+
+      if(errors === 0 && warns > 0){
+        return "O cenário parece preventivo: há alertas, mas não necessariamente uma falha crítica consolidada.";
+      }
+
+      return "O trecho mostra comportamento misto. O ideal é correlacionar horário, serviço afetado e recorrência para definir prioridade.";
+    }
+
+    analyzeBtn.addEventListener("click", () => {
+      const text = (input.value || "").trim();
+
+      if(!text){
+        renderEmpty();
+        return;
+      }
+
+      const lines = text.split(/\r?\n/).filter(Boolean);
+      const lower = text.toLowerCase();
+
+      const errors = (lower.match(/\berror\b/g) || []).length;
+      const warns = (lower.match(/\bwarn\b|\bwarning\b/g) || []).length;
+      const timeouts = (lower.match(/\btimeout\b/g) || []).length;
+      const serverErrors = (lower.match(/\b500\b|\b502\b|\b503\b|\b504\b/g) || []).length;
+      const authIssues = (lower.match(/\b401\b|\b403\b|\bforbidden\b|\baccess denied\b|\blogin failed\b/g) || []).length;
+
+      const statusCodes = extractMatches(text, /\b[1-5]\d{2}\b/g);
+      const endpoints = extractMatches(text, /\/[A-Za-z0-9._\-\/]+/g);
+
+      const topStatuses = getTopEntries(countOccurrences(statusCodes), 3);
+      const topEndpoints = getTopEntries(countOccurrences(endpoints), 3);
+
+      const severity = errors + serverErrors >= 4
+        ? "Alta"
+        : errors + warns >= 3
+          ? "Média"
+          : "Baixa";
+
+      const insight = detectInsight(errors, warns, timeouts, serverErrors, authIssues);
+
+      result.className = "tool-result";
+      result.innerHTML = `
+        <div class="result-kpis">
+          <div class="result-kpi">
+            <div class="k">Linhas lidas</div>
+            <div class="v">${lines.length}</div>
+          </div>
+          <div class="result-kpi">
+            <div class="k">Erros / alertas</div>
+            <div class="v">${errors + warns}</div>
+          </div>
+          <div class="result-kpi">
+            <div class="k">Severidade</div>
+            <div class="v">${severity}</div>
+          </div>
+        </div>
+
+        <div>
+          <strong>Leitura inicial</strong>
+          <ul class="result-list">
+            <li><strong>Erros:</strong> ${errors}</li>
+            <li><strong>Alertas:</strong> ${warns}</li>
+            <li><strong>Timeouts:</strong> ${timeouts}</li>
+            <li><strong>Falhas de servidor:</strong> ${serverErrors}</li>
+          </ul>
+        </div>
+
+        <div>
+          <strong>Status mais recorrentes</strong>
+          <ul class="result-list">
+            ${topStatuses.length
+              ? topStatuses.map(([code, count]) => `<li><strong>${escapeHtml(code)}</strong> apareceu ${count}x</li>`).join("")
+              : `<li>Nenhum status numérico relevante encontrado.</li>`
+            }
+          </ul>
+        </div>
+
+        <div>
+          <strong>Endpoints mais frequentes</strong>
+          <ul class="result-list">
+            ${topEndpoints.length
+              ? topEndpoints.map(([endpoint, count]) => `<li><strong>${escapeHtml(endpoint)}</strong> apareceu ${count}x</li>`).join("")
+              : `<li>Nenhum endpoint claro encontrado no trecho analisado.</li>`
+            }
+          </ul>
+        </div>
+
+        <div>
+          <strong>Hipótese inicial</strong>
+          <ul class="result-list">
+            <li>${escapeHtml(insight)}</li>
+          </ul>
+        </div>
+      `;
+    });
+
+    exampleBtn.addEventListener("click", () => {
+      input.value = sampleLog;
+      analyzeBtn.click();
+    });
+
+    if(!input.value.trim()){
+      renderEmpty();
+    }
+  })();
+
+  // ===== Ferramenta 2: Diagnóstico de Incidentes
+  (function initIncidentTool(){
+    const typeEl = document.getElementById("incidentType");
+    const impactEl = document.getElementById("incidentImpact");
+    const usersEl = document.getElementById("incidentUsers");
+    const button = document.getElementById("analyzeIncidentBtn");
+    const result = document.getElementById("incidentResult");
+
+    if(!typeEl || !impactEl || !usersEl || !button || !result) return;
+
+    const incidentMap = {
+      internet: {
+        cause: "Possível falha de conectividade, link, gateway ou equipamento de borda.",
+        firstStep: "Validar link, roteador, gateway padrão e alcance do problema antes de escalar.",
+        area: "Rede / conectividade"
+      },
+      dns: {
+        cause: "Indício de falha de resolução de nomes ou inconsistência de DNS.",
+        firstStep: "Testar resolução por IP, validar DNS configurado e limpar cache local.",
+        area: "Rede / DNS"
+      },
+      system: {
+        cause: "Possível lentidão de aplicação, indisponibilidade de serviço ou consumo elevado de recursos.",
+        firstStep: "Verificar disponibilidade do sistema, uso de CPU/RAM, logs e horário do incidente.",
+        area: "Sistema / aplicação"
+      },
+      access: {
+        cause: "Falha de credenciais, permissão, perfil de usuário ou autenticação.",
+        firstStep: "Validar usuário, senha, perfil de acesso e tentativa recente de bloqueio.",
+        area: "Acesso / identidade"
+      },
+      printer: {
+        cause: "Possível falha local, fila travada, driver ou comunicação com periférico.",
+        firstStep: "Revisar fila de impressão, conexão do dispositivo e status do driver.",
+        area: "Periféricos"
+      },
+      network: {
+        cause: "Possível falha de switch, porta, cabeamento ou equipamento de rede local.",
+        firstStep: "Testar porta, cabo, LED do equipamento e conectividade com outros pontos.",
+        area: "Infraestrutura local"
+      }
     };
 
-    // ---- helpers
-    const brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
-    const brl2 = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const num = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
-
-    function parsePtNumber(value){
-      // aceita "50.000,50" ou "50000.50" ou "50 000"
-      const v = String(value || "").trim();
-      if(!v) return NaN;
-      const cleaned = v.replace(/\s/g,"").replace(/\./g,"").replace(",",".");
-      const n = Number(cleaned);
-      return Number.isFinite(n) ? n : NaN;
+    function getPriority(impact, users){
+      if(impact === "high" && users === "many") return "Crítica";
+      if(impact === "high" || users === "many") return "Alta";
+      if(impact === "medium" || users === "few") return "Média";
+      return "Baixa";
     }
 
-    function clamp(n, min, max){
-      return Math.max(min, Math.min(max, n));
+    function getEscalation(priority){
+      if(priority === "Crítica"){
+        return "Escalonamento imediato para equipe responsável, com comunicação rápida ao setor afetado.";
+      }
+      if(priority === "Alta"){
+        return "Atendimento prioritário com validação técnica e possível escalonamento rápido.";
+      }
+      if(priority === "Média"){
+        return "Atuar na triagem, validar causa provável e acompanhar antes de escalar.";
+      }
+      return "Pode ser tratado como chamado pontual com checagem local inicial.";
     }
 
-    function setToggleText(){
-      const on = toggle.getAttribute("aria-pressed") === "true";
-      toggle.querySelector(".rf-calc__switchText").textContent = on ? "Ativo" : "Inativo";
-    }
-    setToggleText();
+    button.addEventListener("click", () => {
+      const type = typeEl.value;
+      const impact = impactEl.value;
+      const users = usersEl.value;
 
-    toggle.addEventListener("click", () => {
-      const current = toggle.getAttribute("aria-pressed") === "true";
-      toggle.setAttribute("aria-pressed", String(!current));
-      setToggleText();
-    });
-
-    function compute(){
-      const gasto = parsePtNumber(fields.gasto.value);
-      const perc = parsePtNumber(fields.perc.value);
-      const horas = parsePtNumber(fields.horas.value);
-      const custoHora = parsePtNumber(fields.custoHora.value);
-      const taxaRec = parsePtNumber(fields.taxaRecuperavel.value);
-
-      if([gasto, perc, horas, custoHora, taxaRec].some(n => !Number.isFinite(n))){
-        throw new Error("Preencha todos os campos com números válidos.");
+      if(!type || !impact || !users){
+        result.className = "tool-result is-empty";
+        result.innerHTML = `Preencha todos os campos para gerar um diagnóstico inicial.`;
+        return;
       }
 
-      const percClamped = clamp(perc, 0, 80);               // segurança
-      const taxaClamped = clamp(taxaRec, 0, 100);
-      const horasClamped = clamp(horas, 0, 600);            // teto razoável
-      const custoHoraClamped = clamp(custoHora, 0, 2000);   // teto razoável
+      const data = incidentMap[type];
+      const priority = getPriority(impact, users);
+      const escalation = getEscalation(priority);
 
-      // ---- impactos
-      const perdaDesperdicio = gasto * (percClamped / 100);
+      result.className = "tool-result";
+      result.innerHTML = `
+        <div class="result-kpis">
+          <div class="result-kpi">
+            <div class="k">Área provável</div>
+            <div class="v">${escapeHtml(data.area)}</div>
+          </div>
+          <div class="result-kpi">
+            <div class="k">Prioridade</div>
+            <div class="v">${escapeHtml(priority)}</div>
+          </div>
+          <div class="result-kpi">
+            <div class="k">Impacto</div>
+            <div class="v">${escapeHtml(impact === "high" ? "Alto" : impact === "medium" ? "Médio" : "Baixo")}</div>
+          </div>
+        </div>
 
-      // horas recuperáveis * custo/hora
-      const horasRecuperaveis = horasClamped * (taxaClamped / 100);
-      let custoTempoRec = horasRecuperaveis * custoHoraClamped;
+        <div>
+          <strong>Hipótese inicial</strong>
+          <ul class="result-list">
+            <li>${escapeHtml(data.cause)}</li>
+          </ul>
+        </div>
 
-      // modo conservador reduz estimativas (evita exagero)
-      const conservador = toggle.getAttribute("aria-pressed") === "true";
-      const fator = conservador ? 0.75 : 1.0; // reduz 25%
-      const perdaMes = (perdaDesperdicio + custoTempoRec) * fator;
+        <div>
+          <strong>Primeiro passo recomendado</strong>
+          <ul class="result-list">
+            <li>${escapeHtml(data.firstStep)}</li>
+          </ul>
+        </div>
 
-      // outputs
-      outPerdaMes.textContent = brl.format(perdaMes);
-      outPerdaAno.textContent = brl.format(perdaMes * 12) + " / ano";
-      kDesperdicio.textContent = brl2.format(perdaDesperdicio * fator);
-      kTempo.textContent = brl2.format(custoTempoRec * fator);
-      kHoras.textContent = num.format(horasRecuperaveis) + " h";
-
-      // insight executivo (curto, forte)
-      const faixa =
-        perdaMes >= 20000 ? "alto" :
-        perdaMes >= 7000  ? "médio" : "baixo";
-
-      const acao = faixa === "alto"
-        ? "Priorize padronização do processo e rastreabilidade (compras → aprovação → recebimento → financeiro)."
-        : faixa === "médio"
-          ? "Uma rotina simples de conferência e indicadores já tende a reduzir perdas."
-          : "Há espaço para ganho leve com organização e pequenos ajustes de fluxo.";
-
-      const comparativo =
-        perdaMes >= 15000 ? "Isso normalmente já justifica rever fornecedores, checklist e etapas de conferência."
-        : perdaMes >= 5000 ? "Um controle de compras e um fechamento financeiro mais estruturado costumam reduzir esse tipo de custo oculto."
-        : "Com consistência de dados e um processo leve, a tendência é manter esse impacto controlado.";
-
-      const modoTxt = conservador ? "conservador" : "realista";
-      insight.innerHTML = `
-        <strong>Leitura executiva:</strong> no cenário <strong>${modoTxt}</strong>, o custo oculto estimado é de
-        <strong>${brl.format(perdaMes)}</strong> por mês (${brl.format(perdaMes * 12)} ao ano).
-        <br><br>
-        <strong>Direção:</strong> ${acao}
-        <br>
-        <span style="color: var(--muted);">${comparativo}</span>
+        <div>
+          <strong>Direção de atendimento</strong>
+          <ul class="result-list">
+            <li>${escapeHtml(escalation)}</li>
+          </ul>
+        </div>
       `;
-
-      return {
-        perdaMes, perdaAno: perdaMes * 12,
-        perdaDesperdicio: perdaDesperdicio * fator,
-        custoTempoRec: custoTempoRec * fator,
-        horasRecuperaveis
-      };
-    }
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      try{
-        compute();
-      }catch(err){
-        insight.innerHTML = `<strong>Atenção:</strong> ${String(err.message || err)}`;
-      }
-    });
-
-    btnClear.addEventListener("click", () => {
-      form.reset();
-      fields.taxaRecuperavel.value = "35";
-      toggle.setAttribute("aria-pressed", "true");
-      setToggleText();
-
-      outPerdaMes.textContent = "R$ 0";
-      outPerdaAno.textContent = "R$ 0 / ano";
-      kDesperdicio.textContent = "R$ 0";
-      kTempo.textContent = "R$ 0";
-      kHoras.textContent = "0 h";
-      insight.innerHTML = `Preencha os campos e clique em <strong>“Analisar impacto”</strong>.`;
-    });
-
-    btnExample.addEventListener("click", () => {
-      fields.gasto.value = "50.000";
-      fields.perc.value = "3";
-      fields.horas.value = "40";
-      fields.custoHora.value = "25";
-      fields.taxaRecuperavel.value = "35";
-      toggle.setAttribute("aria-pressed", "true");
-      setToggleText();
-      try{ compute(); }catch(_){}
-    });
-
-    btnCopy.addEventListener("click", async () => {
-      try{
-        const data = compute();
-        const resumo =
-          `Resumo (Desperdício Invisível)\n` +
-          `Perda estimada/mês: ${brl.format(data.perdaMes)}\n` +
-          `Perda estimada/ano: ${brl.format(data.perdaAno)}\n` +
-          `• Desperdício/retrabalho: ${brl2.format(data.perdaDesperdicio)}\n` +
-          `• Tempo manual recuperável: ${brl2.format(data.custoTempoRec)}\n` +
-          `• Horas recuperáveis: ${num.format(data.horasRecuperaveis)} h\n`;
-        await navigator.clipboard.writeText(resumo);
-        const old = btnCopy.textContent;
-        btnCopy.textContent = "Copiado ✓";
-        setTimeout(() => btnCopy.textContent = old, 1200);
-      }catch(e){
-        prompt("Copie o resumo:", (insight.textContent || "").trim());
-      }
-    });
-
-    // input sanitization (leve): permite números, ponto, vírgula e espaço
-    Object.values(fields).forEach(el => {
-      el.addEventListener("input", () => {
-        el.value = el.value.replace(/[^\d.,\s]/g, "");
-      });
     });
   })();
 
-    (function(){
-    const modal = document.getElementById("rfHelpModal");
-    const openBtn = document.getElementById("rfOpenHelp");
-    const closeBtns = [
-      document.getElementById("rfCloseHelp"),
-      document.getElementById("rfCloseHelp2")
-    ].filter(Boolean);
+  // ===== Ferramenta 3: Otimizador de Rotina Digital
+  (function initRoutineOptimizer(){
+    const tasksEl = document.getElementById("routineTasks");
+    const hoursEl = document.getElementById("routineHours");
+    const levelEl = document.getElementById("routineLevel");
+    const button = document.getElementById("analyzeRoutineBtn");
+    const result = document.getElementById("routineResult");
 
-    const backdrop = modal?.querySelector(".rf-modal__backdrop");
-    const tryExample = document.getElementById("rfTryExample");
-    const btnExample = document.getElementById("usarExemplo"); // botão já existente na calculadora
+    if(!tasksEl || !hoursEl || !levelEl || !button || !result) return;
 
-    let lastFocus = null;
+    function getEfficiencyScore(tasks, hours, level){
+      let score = 100;
 
-    function openModal(){
-      if(!modal) return;
-      lastFocus = document.activeElement;
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-      // foca no fechar para acessibilidade
-      (closeBtns[0] || modal).focus?.();
+      score -= Math.min(tasks * 2, 40);
+      score -= Math.min(hours * 2, 35);
+
+      if(level === "low") score -= 20;
+      if(level === "medium") score -= 10;
+
+      return Math.max(0, Math.min(100, score));
     }
 
-    function closeModal(){
-      if(!modal) return;
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      lastFocus?.focus?.();
+    function getEfficiencyLabel(score){
+      if(score >= 75) return "Alta";
+      if(score >= 50) return "Média";
+      return "Baixa";
     }
 
-    openBtn?.addEventListener("click", openModal);
-    closeBtns.forEach(b => b.addEventListener("click", closeModal));
-    backdrop?.addEventListener("click", closeModal);
+    function getSuggestions(score, level, hours){
+      const suggestions = [];
 
-    document.addEventListener("keydown", (e) => {
-      if(modal?.classList.contains("is-open") && e.key === "Escape"){
-        e.preventDefault();
-        closeModal();
+      if(level === "low"){
+        suggestions.push("Padronizar etapas da rotina para reduzir variação e dependência manual.");
       }
-    });
 
-    // "Usar exemplo agora" reaproveita o botão que você já tem na calculadora
-    tryExample?.addEventListener("click", () => {
-      if(btnExample) btnExample.click();
-      closeModal();
-      // rola até a calculadora (opcional)
-      document.getElementById("calc-desperdicio")?.scrollIntoView({ behavior:"smooth", block:"start" });
+      if(hours >= 8){
+        suggestions.push("Mapear atividades repetitivas com potencial de automação ou simplificação.");
+      }
+
+      if(score < 50){
+        suggestions.push("Criar fluxo mais claro de execução, conferência e acompanhamento.");
+        suggestions.push("Transformar tarefas manuais recorrentes em checklist, script ou rotina padronizada.");
+      } else if(score < 75){
+        suggestions.push("Há espaço para ganho com ajustes de processo e pequenas automações.");
+      } else {
+        suggestions.push("A rotina já demonstra boa eficiência, com espaço para otimizações pontuais.");
+      }
+
+      return suggestions.slice(0, 3);
+    }
+
+    button.addEventListener("click", () => {
+      const tasks = Number(tasksEl.value);
+      const hours = Number(hoursEl.value);
+      const level = levelEl.value;
+
+      if(!Number.isFinite(tasks) || tasks < 0 || !Number.isFinite(hours) || hours < 0 || !level){
+        result.className = "tool-result is-empty";
+        result.innerHTML = `Preencha os dados para obter uma leitura executiva da rotina.`;
+        return;
+      }
+
+      const score = getEfficiencyScore(tasks, hours, level);
+      const efficiency = getEfficiencyLabel(score);
+      const lostHoursMonth = hours * 4;
+      const suggestions = getSuggestions(score, level, hours);
+
+      const executiveReading =
+        efficiency === "Baixa"
+          ? "A rotina indica forte dependência de tarefas manuais e boa oportunidade de ganho com organização e automação."
+          : efficiency === "Média"
+            ? "A rotina parece funcional, mas ainda há margem clara para reduzir retrabalho e aumentar fluidez."
+            : "A rotina já transmite boa estrutura, com potencial de melhoria incremental e ganho de escala.";
+
+      result.className = "tool-result";
+      result.innerHTML = `
+        <div class="result-kpis">
+          <div class="result-kpi">
+            <div class="k">Eficiência</div>
+            <div class="v">${escapeHtml(efficiency)}</div>
+          </div>
+          <div class="result-kpi">
+            <div class="k">Score</div>
+            <div class="v">${score}</div>
+          </div>
+          <div class="result-kpi">
+            <div class="k">Tempo repetitivo / mês</div>
+            <div class="v">${formatHours(lostHoursMonth)}</div>
+          </div>
+        </div>
+
+        <div>
+          <strong>Leitura executiva</strong>
+          <ul class="result-list">
+            <li>${escapeHtml(executiveReading)}</li>
+          </ul>
+        </div>
+
+        <div>
+          <strong>Sugestões práticas</strong>
+          <ul class="result-list">
+            ${suggestions.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ul>
+        </div>
+      `;
     });
   })();
+  
 
-  // ===== Demo Cotação (Modal + iframe lazy load)
-(function(){
-  const openBtn = document.getElementById("openCotacaoDemo");
-  const modal = document.getElementById("cotacaoModal");
-  const closeBtn = document.getElementById("closeCotacaoDemo");
-  const frame = document.getElementById("cotacaoFrame");
-  const backdrop = modal?.querySelector("[data-close]");
-  const fullLink = document.getElementById("cotacaoFull");
+ // ===== EXEMPLO - Diagnóstico
+  document.getElementById("incidentExampleBtn")?.addEventListener("click", () => {
+  document.getElementById("incidentType").value = "internet";
+  document.getElementById("incidentImpact").value = "high";
+  document.getElementById("incidentUsers").value = "many";
+});
 
-  // ajuste aqui o caminho do seu arquivo de cotação
-  const DEMO_URL = "demos/cotacao.html";
+// ===== MODAL
+function openModal(id){
+  document.getElementById(id)?.classList.add("active");
+}
 
-  let lastFocus = null;
+function closeModal(id){
+  document.getElementById(id)?.classList.remove("active");
+}
 
-  function openModal(){
-    if(!modal) return;
-    lastFocus = document.activeElement;
+document.getElementById("incidentHelpBtn")?.addEventListener("click", () => {
+  openModal("incidentHelpModal");
+});
 
-    // carrega só quando abrir (não pesa a home e não dá conflito de CSS)
-    if(frame && !frame.src) frame.src = DEMO_URL;
-    if(fullLink) fullLink.href = DEMO_URL;
-
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-    closeBtn?.focus?.();
-  }
-
-  function closeModal(){
-    if(!modal) return;
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-    lastFocus?.focus?.();
-  }
-
-  openBtn?.addEventListener("click", openModal);
-  closeBtn?.addEventListener("click", closeModal);
-  backdrop?.addEventListener("click", closeModal);
-
-  document.addEventListener("keydown", (e) => {
-    if(modal?.classList.contains("is-open") && e.key === "Escape"){
-      e.preventDefault();
-      closeModal();
-    }
+document.querySelectorAll("[data-close]").forEach(el => {
+  el.addEventListener("click", () => {
+    closeModal(el.getAttribute("data-close"));
   });
-})();
+});
+// ===== EXEMPLO - Otimizador de Rotina
+document.getElementById("routineExampleBtn")?.addEventListener("click", () => {
+  document.getElementById("routineTasks").value = "18";
+  document.getElementById("routineHours").value = "10";
+  document.getElementById("routineLevel").value = "low";
+  document.getElementById("analyzeRoutineBtn")?.click();
+});
 
-  </script>
-</body>
+// ===== MODAL - Otimizador de Rotina
+document.getElementById("routineHelpBtn")?.addEventListener("click", () => {
+  openModal("routineHelpModal");
+});
+</script>
 </html>
-
-
-
