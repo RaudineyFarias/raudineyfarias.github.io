@@ -2,8 +2,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raudiney Farias</title>
-</head>
+  <title>Raudiney Farias — Suporte Técnico • Infraestrutura • Automação</title>
+  <meta name="description" content="Portfólio profissional de Raudiney Farias com foco em Suporte Técnico, Infraestrutura, Automação, Dados e sistemas Django.">
 <style>
   :root{
     --navy-950:#08101C;
@@ -18,34 +18,6 @@
     --ice-100:#EAF2FF;
     --ice-200:#D8E5FF;
 
-    --bg:#F4F7FB;
-    --bg-soft:#EDF3FB;
-    --card:#FFFFFF;
-    --card-2:#F9FBFF;
-    --text:#0F172A;
-    --muted:#5B6B81;
-    --line:#D6E0EE;
-    --line-strong:#C4D3E6;
-
-    --accent:var(--blue-500);
-    --accent-2:var(--blue-400);
-    --accent-soft:rgba(47,107,255,.10);
-
-    --shadow-sm:0 8px 20px rgba(15,23,42,.06);
-    --shadow:0 18px 45px rgba(15,23,42,.08);
-    --shadow-lg:0 24px 70px rgba(8,16,28,.12);
-
-    --radius:18px;
-    --radius-sm:14px;
-    --radius-xs:12px;
-
-    --container:1120px;
-    --pad:22px;
-
-    --focus:0 0 0 4px rgba(47,107,255,.14);
-  }
-
-  [data-theme="dark"]{
     --bg:#0A101A;
     --bg-soft:#0D1522;
     --card:#101826;
@@ -55,10 +27,22 @@
     --line:#22324A;
     --line-strong:#2C4160;
 
+    --accent:var(--blue-500);
+    --accent-2:var(--blue-400);
+    --accent-soft:rgba(91,140,255,.14);
+
     --shadow-sm:0 10px 22px rgba(0,0,0,.22);
     --shadow:0 18px 50px rgba(0,0,0,.28);
     --shadow-lg:0 28px 80px rgba(0,0,0,.38);
-    --accent-soft:rgba(91,140,255,.14);
+
+    --radius:18px;
+    --radius-sm:14px;
+    --radius-xs:12px;
+
+    --container:1120px;
+    --pad:22px;
+
+    --focus:0 0 0 4px rgba(91,140,255,.18);
   }
 
   *{ box-sizing:border-box; }
@@ -442,30 +426,43 @@
     gap:12px;
   }
 
-  .metric .box{
-    border:1px solid color-mix(in srgb, var(--line) 82%, transparent);
-    border-radius:16px;
-    padding:12px;
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--ice-100) 52%, transparent), transparent 120%);
-  }
+.metric .box{
+  border:1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  border-radius:16px;
+  padding:14px;
+
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,0.12),
+    rgba(255,255,255,0.02)
+  );
+
+  backdrop-filter: blur(6px);
+}
+
+.metric .num{
+  color:#9FC2FF; /* azul claro forte */
+  font-weight:700;
+}
+
+.metric .label{
+  color:#C7D6F5; /* melhora MUITO a leitura */
+  opacity:0.9;
+}
 
   .metric .num{
     font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size:18px;
     font-weight:700;
     letter-spacing:-0.03em;
-    color:var(--navy-700);
   }
 
-  [data-theme="dark"] .metric .num{
-    color:var(--blue-300);
-  }
+
 
   .metric .label{
     margin-top:6px;
     font-size:12px;
-    color:var(--muted);
+    
   }
 
   /* ===== Sections ===== */
@@ -585,8 +582,8 @@
     box-shadow:inset 0 1px 0 rgba(255,255,255,.4);
   }
 
-  [data-theme="dark"] .project,
-  [data-theme="dark"] .demo-card{
+  .project,
+  .demo-card{
     background:
       linear-gradient(180deg, rgba(91,140,255,.08), transparent 78%);
   }
@@ -932,7 +929,7 @@
     color:var(--navy-700);
   }
 
-  [data-theme="dark"] .result-kpi .v{
+  .result-kpi .v{
     color:var(--blue-300);
   }
 
@@ -1089,18 +1086,60 @@
 .rf-modal__block ul{
   padding-left:18px;
 }
+
+.project-featured{
+  border-color:color-mix(in srgb, var(--accent) 28%, var(--line));
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 1px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.project-featured::before{
+  content:"";
+  position:absolute;
+  inset:-40% -30%;
+  background:
+    radial-gradient(35% 25% at 20% 20%, rgba(91,140,255,.14), transparent 60%),
+    radial-gradient(30% 22% at 90% 10%, rgba(47,107,255,.10), transparent 58%);
+  pointer-events:none;
+}
+
+.project-logo{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+
+  background:#fff;
+  border:1px solid var(--line);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:6px;
+
+  box-shadow:
+    0 6px 14px rgba(15,23,42,.08),
+    inset 0 1px 0 rgba(255,255,255,.6);
+}
+
+.project-logo{
+  background:#0F172A;
+  border-color:#24344D;
+}
+
+.project-logo img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
 </style>
+</head>
 <body>
   <!-- SVG icons -->
   <svg width="0" height="0" style="position:absolute">
     <symbol id="i-arrow" viewBox="0 0 24 24">
       <path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"></path>
-    </symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M21 15.5A8.5 8.5 0 0 1 8.5 3a7 7 0 1 0 12.5 12.5z"></path>
-    </symbol>
-    <symbol id="i-sun" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm0-16h1v3h-1V2Zm0 17h1v3h-1v-3ZM2 11h3v1H2v-1Zm17 0h3v1h-3v-1ZM4.2 4.2l2.1 2.1-.7.7L3.5 4.9l.7-.7Zm13.9 13.9l2.1 2.1-.7.7-2.1-2.1.7-.7ZM19.8 4.2l.7.7-2.1 2.1-.7-.7 2.1-2.1ZM5.6 17.4l.7.7-2.1 2.1-.7-.7 2.1-2.1Z"></path>
     </symbol>
     <symbol id="i-mail" viewBox="0 0 24 24">
       <path fill="currentColor" d="M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm0 2v.5l8 5 8-5V8H4Zm16 10V10.6l-8 5-8-5V18h16Z"></path>
@@ -1144,11 +1183,6 @@
         </nav>
 
         <div class="actions">
-          <button class="btn ghost" id="themeBtn" type="button" aria-label="Alternar tema">
-            <svg class="icon" aria-hidden="true"><use href="#i-moon"></use></svg>
-            <span id="themeLabel">Tema</span>
-          </button>
-
           <a class="btn primary" href="#contato">
             <span>Falar comigo</span>
             <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
@@ -1168,18 +1202,19 @@
               <img src="raudiney2.png" alt="Raudiney Farias" class="avatar">
               <div>
                 <div class="hero-name">Raudiney Farias</div>
-                <div class="hero-role">Técnico de Suporte • Processos • Automação • Dados</div>
+                <div class="hero-role">Técnico de Suporte • Infraestrutura • Django • Dados</div>
               </div>
             </div>
 
 
 
-            <h1>Suporte Técnico com visão estratégica em infraestrutura, automação e dados.</h1>
+            <h1>Suporte Técnico com visão de infraestrutura, automação e sistemas reais.</h1>
 
             <p class="sub">
-              Atuo em tecnologia com foco na resolução de problemas, suporte ao usuário, organização de rotinas e melhoria de processos.
-              Minha base une atendimento técnico, análise operacional e construção de soluções práticas para gerar mais estabilidade,
-              eficiência e confiança no dia a dia.
+              Atuo como <strong>Técnico de Suporte</strong> em ambiente corporativo, com foco em atendimento ao usuário,
+              diagnóstico de incidentes, organização de chamados e melhoria contínua.
+              Minha trajetória une <strong>suporte técnico</strong>, <strong>infraestrutura</strong>,
+              <strong>automação</strong>, <strong>dados</strong> e desenvolvimento de sistemas web com Django.
             </p>
 
             <div class="hero-cta">
@@ -1199,9 +1234,9 @@
             </div>
 
             <div class="meta">
-              <span class="pill"><span class="mono">Foco:</span> Suporte e operação</span>
-              <span class="pill"><span class="mono">Base:</span> Processos + dados</span>
-              <span class="pill"><span class="mono">Diferencial:</span> Automação aplicada</span>
+              <span class="pill"><span class="mono">Atual:</span> Técnico de Suporte • Qualificar TI / TRT13</span>
+              <span class="pill"><span class="mono">Base:</span> Infraestrutura + Service Desk</span>
+              <span class="pill"><span class="mono">Projetos:</span> RDesk • RaudTraining • RCore ERP</span>
             </div>
           </div>
         </div>
@@ -1681,19 +1716,191 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Projetos em destaque</h2>
-            <p>Projetos posicionados como soluções tecnológicas, com foco em automação, controle e apoio operacional.</p>
+          <h2>Projetos em destaque</h2>
+          <p>Soluções reais desenvolvidas com foco em suporte corporativo, SaaS, automação, gestão operacional e arquitetura web.</p>
           </div>
-          <span class="badge">cases</span>
+          <span class="badge">Sistemas Reais</span>
+        </div>
+        <div class="grid"> 
+
+<!-- ========================================================= -->
+
+        <!-- RDesk -->
+    <div class="card col-7">
+          <div class="project project-featured">
+            <div class="top">
+              <div>
+                <div>
+                  <div class="project-logo">
+                    <img src="images/RDesk.png" alt="RDesk Logo">
+                  </div>
+
+                  <h3>RDesk — Plataforma SaaS de Gestão de Chamados</h3>
+
+                </div>
+
+                <div class="tags">
+                  <span class="tag">SaaS</span>
+                  <span class="tag">Django</span>
+                  <span class="tag">MySQL</span>
+                  <span class="tag">Multiempresa</span>
+                  <span class="tag">Dashboard</span>
+                  <span class="tag">Segurança</span>
+                  <span class="tag">Service Desk</span>
+                </div>
+              </div>
+
+              <span class="badge">produto premium</span>
+            </div>
+
+        <p class="desc">
+          Plataforma profissional desenvolvida para empresas que desejam organizar chamados internos,
+          suporte técnico e fluxos operacionais em ambiente moderno, seguro e escalável.
+
+          O sistema substitui controles improvisados via e-mail, mensagens e planilhas,
+          centralizando toda a operação em uma plataforma única e inteligente.
+        </p>
+
+        <div class="kv">
+          <div class="k">
+            <div class="t">Backend</div>
+            <div class="v">Python + Django</div>
+          </div>
+
+          <div class="k">
+            <div class="t">Banco</div>
+            <div class="v">MySQL</div>
+          </div>
+
+          <div class="k">
+            <div class="t">Infra</div>
+            <div class="v">Ubuntu + Nginx + Gunicorn</div>
+          </div>
+
+          <div class="k">
+            <div class="t">Modelo</div>
+            <div class="v">SaaS Multiempresa</div>
+          </div>
         </div>
 
-        <div class="grid">
+        <div class="item" style="margin-top:12px;">
+          <span class="badge">Chamados</span>
+          <div>
+            <strong>Fluxo profissional de tickets</strong>
+            <p>
+              Abertura, triagem, atendimento, aguardando usuário, resolvido,
+              encerrado, cancelado e reabertura.
+            </p>
+          </div>
+        </div>
 
-          <div class="card col-7">
+        <div class="item">
+          <span class="badge">Operação</span>
+          <div>
+            <strong>Fila inteligente e distribuição entre setores</strong>
+            <p>
+              TI, RH, Financeiro, Compras, Administrativo e demais áreas,
+              com transferência preservando histórico.
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="badge">Gestão</span>
+          <div>
+            <strong>Dashboard executivo</strong>
+            <p>
+              SLA, produtividade, tempo médio, prioridades,
+              gargalos operacionais e performance da equipe.
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="badge">Segurança</span>
+          <div>
+            <strong>Ambiente corporativo seguro</strong>
+            <p>
+              Permissões por perfil, CSRF, logs, auditoria,
+              isolamento entre empresas e rotas críticas protegidas.
+            </p>
+          </div>
+        </div>
+      </div>
+        </div>
+
+        <!-- Card -->
+
+    <div class="card col-5">
+      <div class="section-head" style="margin-bottom:10px;">
+        <h2 style="font-size:15px;">O que o projeto demonstra</h2>
+        <span class="badge">alto nível</span>
+      </div>
+
+      <div class="list">
+
+        <div class="item">
+          <span class="badge">Produto</span>
+          <div>
+            <strong>Visão real de mercado</strong>
+            <p>
+              Solução construída para dor real de empresas,
+              com foco em produtividade e organização interna.
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="badge">Full Stack</span>
+          <div>
+            <strong>Capacidade ponta a ponta</strong>
+            <p>
+              Backend, banco de dados, frontend, UX,
+              deploy e evolução contínua.
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="badge">Negócio</span>
+          <div>
+            <strong>Lógica empresarial aplicada</strong>
+            <p>
+              SLA, perfis hierárquicos, setores,
+              produtividade e indicadores gerenciais.
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="badge">Escala</span>
+          <div>
+            <strong>Arquitetura SaaS preparada para crescer</strong>
+            <p>
+              Multiempresa, isolamento de dados
+              e estrutura preparada para expansão.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+<!-- ========================================================= -->
+
+        <!-- RaudTraining -->
+    <div class="card col-7">
           <div class="project">
             <div class="top">
               <div>
-                <h3>RaudTraining — Plataforma SaaS para personal trainers e academias</h3>
+                  <div>
+                  <div class="project-logo">
+                    <img src="images/RaudTraining.png" alt="RaudTraining-Logo">
+                  </div>
+                  <h3>RaudTraining — Plataforma SaaS para personal trainers e academias</h3>
+                </div>
+                
                 <div class="tags">
                   <span class="tag">SaaS</span>
                   <span class="tag">Django</span>
@@ -1713,35 +1920,35 @@
               O projeto une tecnologia, dados e experiência do usuário para gerar mais eficiência e controle no dia a dia.
             </p>
 
-            <div class="kv">
-              <div class="k">
-                <div class="t">Backend</div>
-                <div class="v">Python + Django</div>
+              <div class="kv">
+                <div class="k">
+                  <div class="t">Backend</div>
+                  <div class="v">Python + Django</div>
+                </div>
+                <div class="k">
+                  <div class="t">Banco</div>
+                  <div class="v">MySQL</div>
+                </div>
+                <div class="k">
+                  <div class="t">Infra</div>
+                  <div class="v">NGINX + Gunicorn + Ubuntu</div>
+                </div>
+                <div class="k">
+                  <div class="t">Tipo</div>
+                  <div class="v">Sistema SaaS em produção</div>
+                </div>
               </div>
-              <div class="k">
-                <div class="t">Banco</div>
-                <div class="v">MySQL</div>
-              </div>
-              <div class="k">
-                <div class="t">Infra</div>
-                <div class="v">NGINX + Gunicorn + Ubuntu</div>
-              </div>
-              <div class="k">
-                <div class="t">Tipo</div>
-                <div class="v">Sistema SaaS em produção</div>
-              </div>
-            </div>
 
-            <div class="item" style="margin-top:12px;">
-              <span class="badge">Funcionalidades</span>
-              <div>
-                <strong>Gestão completa e acompanhamento</strong>
-                <p>
-                  Controle de alunos, avaliações físicas, treinos, timeline de evolução,
-                  metas, frequência e relatórios com leitura clara da performance.
-                </p>
+              <div class="item" style="margin-top:12px;">
+                <span class="badge">Funcionalidades</span>
+                <div>
+                  <strong>Gestão completa e acompanhamento</strong>
+                  <p>
+                    Controle de alunos, avaliações físicas, treinos, timeline de evolução,
+                    metas, frequência e relatórios com leitura clara da performance.
+                  </p>
+                </div>
               </div>
-            </div>
 
             <div class="item">
               <span class="badge">Diferencial</span>
@@ -1757,294 +1964,236 @@
 
           </div>
         </div>
-        <div class="card col-5">
-  <div class="section-head" style="margin-bottom:10px;">
-    <h2 style="font-size:15px;">O que o projeto demonstra</h2>
-    <span class="badge">visão de produto</span>
-  </div>
 
-  <div class="list">
-    <div class="item">
-      <span class="badge">Produto</span>
-      <div>
-        <strong>Construção de solução real</strong>
-        <p>
-          Capacidade de transformar uma necessidade de mercado em um sistema funcional,
-          estruturado e com aplicação prática.
-        </p>
+        <!-- Card -->
+
+    <div class="card col-5">
+      <div class="section-head" style="margin-bottom:10px;">
+        <h2 style="font-size:15px;">O que o projeto demonstra</h2>
+        <span class="badge">visão de produto</span>
       </div>
-    </div>
 
-    <div class="item">
-      <span class="badge">Arquitetura</span>
-      <div>
-        <strong>Modelagem e organização de sistema</strong>
-        <p>
-          Estruturação de dados, regras de negócio, autenticação e controle de acesso
-          com foco em escalabilidade e consistência.
-        </p>
-      </div>
-    </div>
+      <div class="list">
+        <div class="item">
+          <span class="badge">Produto</span>
+          <div>
+            <strong>Construção de solução real</strong>
+            <p>
+              Capacidade de transformar uma necessidade de mercado em um sistema funcional,
+              estruturado e com aplicação prática.
+            </p>
+          </div>
+        </div>
 
-    <div class="item">
-      <span class="badge">Operação</span>
-      <div>
-        <strong>Visão de uso real</strong>
-        <p>
-          Desenvolvimento orientado à rotina do usuário, com foco em eficiência,
-          clareza e redução de fricção no dia a dia.
-        </p>
-      </div>
-    </div>
+        <div class="item">
+          <span class="badge">Arquitetura</span>
+          <div>
+            <strong>Modelagem e organização de sistema</strong>
+            <p>
+              Estruturação de dados, regras de negócio, autenticação e controle de acesso
+              com foco em escalabilidade e consistência.
+            </p>
+          </div>
+        </div>
 
-    <div class="item">
-      <span class="badge">Evolução</span>
-      <div>
-        <strong>Melhoria contínua</strong>
-        <p>
-          Ajustes constantes, novas funcionalidades e adaptação baseada no uso,
-          comportamento e necessidade do sistema.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="item">
+          <span class="badge">Operação</span>
+          <div>
+            <strong>Visão de uso real</strong>
+            <p>
+              Desenvolvimento orientado à rotina do usuário, com foco em eficiência,
+              clareza e redução de fricção no dia a dia.
+            </p>
+          </div>
+        </div>
 
-<div class="card col-7">
-  <div class="project">
-    <div class="top">
-      <div>
-        <h3>RDesk — Plataforma SaaS de Gestão de Chamados Corporativos</h3>
-
-        <div class="tags">
-          <span class="tag">SaaS</span>
-          <span class="tag">Django</span>
-          <span class="tag">MySQL</span>
-          <span class="tag">Multiempresa</span>
-          <span class="tag">Dashboard</span>
-          <span class="tag">Segurança</span>
-          <span class="tag">Service Desk</span>
+        <div class="item">
+          <span class="badge">Evolução</span>
+          <div>
+            <strong>Melhoria contínua</strong>
+            <p>
+              Ajustes constantes, novas funcionalidades e adaptação baseada no uso,
+              comportamento e necessidade do sistema.
+            </p>
+          </div>
         </div>
       </div>
+        </div>
 
-      <span class="badge">produto premium</span>
-    </div>
 
-    <p class="desc">
-      Plataforma profissional desenvolvida para empresas que desejam organizar chamados internos,
-      suporte técnico e fluxos operacionais em ambiente moderno, seguro e escalável.
+<!-- ========================================================= -->
 
-      O sistema substitui controles improvisados via e-mail, mensagens e planilhas,
-      centralizando toda a operação em uma plataforma única e inteligente.
-    </p>
-
-    <div class="kv">
-      <div class="k">
-        <div class="t">Backend</div>
-        <div class="v">Python + Django</div>
-      </div>
-
-      <div class="k">
-        <div class="t">Banco</div>
-        <div class="v">MySQL</div>
-      </div>
-
-      <div class="k">
-        <div class="t">Infra</div>
-        <div class="v">Ubuntu + Nginx + Gunicorn</div>
-      </div>
-
-      <div class="k">
-        <div class="t">Modelo</div>
-        <div class="v">SaaS Multiempresa</div>
-      </div>
-    </div>
-
-    <div class="item" style="margin-top:12px;">
-      <span class="badge">Chamados</span>
-      <div>
-        <strong>Fluxo profissional de tickets</strong>
-        <p>
-          Abertura, triagem, atendimento, aguardando usuário, resolvido,
-          encerrado, cancelado e reabertura.
-        </p>
-      </div>
-    </div>
-
-    <div class="item">
-      <span class="badge">Operação</span>
-      <div>
-        <strong>Fila inteligente e distribuição entre setores</strong>
-        <p>
-          TI, RH, Financeiro, Compras, Administrativo e demais áreas,
-          com transferência preservando histórico.
-        </p>
-      </div>
-    </div>
-
-    <div class="item">
-      <span class="badge">Gestão</span>
-      <div>
-        <strong>Dashboard executivo</strong>
-        <p>
-          SLA, produtividade, tempo médio, prioridades,
-          gargalos operacionais e performance da equipe.
-        </p>
-      </div>
-    </div>
-
-    <div class="item">
-      <span class="badge">Segurança</span>
-      <div>
-        <strong>Ambiente corporativo seguro</strong>
-        <p>
-          Permissões por perfil, CSRF, logs, auditoria,
-          isolamento entre empresas e rotas críticas protegidas.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="card col-5">
-  <div class="section-head" style="margin-bottom:10px;">
-    <h2 style="font-size:15px;">O que o projeto demonstra</h2>
-    <span class="badge">alto nível</span>
-  </div>
-
-  <div class="list">
-
-    <div class="item">
-      <span class="badge">Produto</span>
-      <div>
-        <strong>Visão real de mercado</strong>
-        <p>
-          Solução construída para dor real de empresas,
-          com foco em produtividade e organização interna.
-        </p>
-      </div>
-    </div>
-
-    <div class="item">
-      <span class="badge">Full Stack</span>
-      <div>
-        <strong>Capacidade ponta a ponta</strong>
-        <p>
-          Backend, banco de dados, frontend, UX,
-          deploy e evolução contínua.
-        </p>
-      </div>
-    </div>
-
-    <div class="item">
-      <span class="badge">Negócio</span>
-      <div>
-        <strong>Lógica empresarial aplicada</strong>
-        <p>
-          SLA, perfis hierárquicos, setores,
-          produtividade e indicadores gerenciais.
-        </p>
-      </div>
-    </div>
-
-    <div class="item">
-      <span class="badge">Escala</span>
-      <div>
-        <strong>Arquitetura SaaS preparada para crescer</strong>
-        <p>
-          Multiempresa, isolamento de dados
-          e estrutura preparada para expansão.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-          <div class="card col-7">
+        <!-- RCore -->
+    <div class="card col-7">
             <div class="project">
               <div class="top">
+                
                 <div>
-                  <h3>RaudSistemas — Plataforma de gestão, automação e rastreabilidade</h3>
+
+                <div>
+                  <div class="project-logo">
+                    <img src="images/RCore.png" alt="Rcore-Logo">
+                  </div>
+                  <h3>RCore ERP Fiscal — Sistema SaaS de Gestão Empresarial</h3>
+                </div>
+                  
                   <div class="tags">
+                    <span class="tag">ERP</span>
                     <span class="tag">Django</span>
                     <span class="tag">MySQL</span>
-                    <span class="tag">Automação</span>
-                    <span class="tag">Permissões</span>
-                    <span class="tag">Relatórios</span>
-                    <span class="tag">Dashboards</span>
+                    <span class="tag">Multiempresa</span>
+                    <span class="tag">SaaS</span>
                   </div>
                 </div>
-                <span class="badge">projeto principal</span>
+
+                <span class="badge">sistema completo</span>
               </div>
 
               <p class="desc">
-                Sistema desenvolvido com <strong>Django</strong> e <strong>MySQL</strong> para integrar processos, estruturar fluxos,
-                aumentar rastreabilidade e apoiar decisões. O projeto evidencia minha capacidade de transformar necessidades operacionais
-                em solução tecnológica com foco em controle, segurança, usabilidade e escalabilidade.
+                Sistema ERP desenvolvido em Django com arquitetura SaaS multiempresa, focado em controle financeiro,
+                fiscal e operacional. Projetado para centralizar processos empresariais, garantir rastreabilidade,
+                segurança e escalabilidade em ambiente corporativo.
               </p>
 
               <div class="kv">
                 <div class="k">
                   <div class="t">Backend</div>
-                  <div class="v">Django + MySQL</div>
+                  <div class="v">Python 3.12 + Django 5</div>
                 </div>
+
+                <div class="k">
+                  <div class="t">Banco</div>
+                  <div class="v">MySQL (XAMPP)</div>
+                </div>
+
+                <div class="k">
+                  <div class="t">Arquitetura</div>
+                  <div class="v">SaaS Multiempresa</div>
+                </div>
+
                 <div class="k">
                   <div class="t">Frontend</div>
-                  <div class="v">HTML/CSS + Templates</div>
+                  <div class="v">HTML, CSS e JavaScript</div>
                 </div>
-                <div class="k">
-                  <div class="t">Foco</div>
-                  <div class="v">Processo, rastreabilidade e eficiência</div>
+              </div>
+
+              <div class="item" style="margin-top:12px;">
+                <span class="badge">Módulos</span>
+                <div>
+                  <strong>Gestão empresarial completa</strong>
+                  <p>
+                    Clientes, fornecedores, produtos, estoque, vendas,
+                    financeiro (caixa, contas a pagar/receber) e auditoria integrada.
+                  </p>
                 </div>
-                <div class="k">
-                  <div class="t">Valor</div>
-                  <div class="v">Tecnologia aplicada à operação</div>
+              </div>
+
+              <div class="item">
+                <span class="badge">Integração</span>
+                <div>
+                  <strong>Fluxo automatizado entre módulos</strong>
+                  <p>
+                    Integração entre vendas, estoque e financeiro,
+                    garantindo consistência e rastreabilidade das operações.
+                  </p>
+                </div>
+              </div>
+
+              <div class="item">
+                <span class="badge">Controle</span>
+                <div>
+                  <strong>Permissões e multiempresa</strong>
+                  <p>
+                    Sistema com controle de acesso por perfil, isolamento de dados
+                    entre empresas e gestão completa de usuários.
+                  </p>
+                </div>
+              </div>
+
+              <div class="item">
+                <span class="badge">Arquitetura</span>
+                <div>
+                  <strong>Base preparada para expansão</strong>
+                  <p>
+                    Estrutura modular com suporte a crescimento, incluindo
+                    futura integração fiscal (NF-e) e evolução do sistema SaaS.
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
 
-          <div class="card col-5">
+        <!-- Card -->
+
+      <div class="card col-5">
             <div class="section-head" style="margin-bottom:10px;">
               <h2 style="font-size:15px;">O que o projeto demonstra</h2>
-              <span class="badge">leitura técnica</span>
+              <span class="badge">arquitetura</span>
             </div>
 
             <div class="list">
+
               <div class="item">
-                <span class="badge">Solução</span>
+                <span class="badge">Backend</span>
                 <div>
-                  <strong>Traduz necessidade em sistema</strong>
-                  <p>Capacidade de estruturar um fluxo real em produto funcional.</p>
+                  <strong>Domínio de Django e arquitetura MVC/MVT</strong>
+                  <p>
+                    Estruturação de aplicações complexas com organização modular
+                    e boas práticas de desenvolvimento.
+                  </p>
                 </div>
               </div>
 
               <div class="item">
-                <span class="badge">Automação</span>
+                <span class="badge">Banco</span>
                 <div>
-                  <strong>Menos retrabalho, mais consistência</strong>
-                  <p>Uso de tecnologia para organizar rotinas e dar previsibilidade.</p>
+                  <strong>Modelagem de dados relacional</strong>
+                  <p>
+                    Estruturação de tabelas, relacionamentos e lógica
+                    voltada para sistemas empresariais.
+                  </p>
+                </div>
+              </div>
+
+              <div class="item">
+                <span class="badge">SaaS</span>
+                <div>
+                  <strong>Arquitetura multiempresa</strong>
+                  <p>
+                    Isolamento de dados, controle por empresa
+                    e estrutura preparada para múltiplos clientes.
+                  </p>
                 </div>
               </div>
 
               <div class="item">
                 <span class="badge">Segurança</span>
                 <div>
-                  <strong>Permissões, auditoria e controle</strong>
-                  <p>Visão de confiabilidade, rastreabilidade e ambiente estruturado.</p>
+                  <strong>Controle de acesso e proteção</strong>
+                  <p>
+                    Permissões por perfil, validação de acesso e proteção
+                    contra uso indevido entre empresas.
+                  </p>
                 </div>
               </div>
 
               <div class="item">
-                <span class="badge">Dados</span>
+                <span class="badge">Negócio</span>
                 <div>
-                  <strong>Relatórios e dashboards</strong>
-                  <p>Leitura rápida da operação com foco em decisão e acompanhamento.</p>
+                  <strong>Lógica empresarial aplicada</strong>
+                  <p>
+                    Regras de negócio envolvendo financeiro, estoque,
+                    vendas e auditoria com visão corporativa.
+                  </p>
                 </div>
               </div>
+
             </div>
-          </div>
+        </div>
+
+
+<!-- ========================================================= -->        
+        
         </div>
       </div>
     </section>
@@ -2418,8 +2567,6 @@
   </div>
 </div>
 
-
-
     <footer>
       <div class="container">
         <div class="footer-row">
@@ -2437,45 +2584,6 @@
 <script>
   // ===== Ano automático
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  // ===== Tema (claro/escuro)
-  (function initTheme(){
-    const saved = localStorage.getItem("rf_theme");
-    if(saved && saved !== "light"){
-      document.documentElement.setAttribute("data-theme", saved);
-    }
-    updateThemeIconLabel();
-  })();
-
-  function updateThemeIconLabel(){
-    const theme = document.documentElement.getAttribute("data-theme") || "light";
-    const btn = document.getElementById("themeBtn");
-    const label = document.getElementById("themeLabel");
-    if(!btn || !label) return;
-
-    const iconUse = btn.querySelector("use");
-    if(theme === "dark"){
-      label.textContent = "Claro";
-      if(iconUse) iconUse.setAttribute("href", "#i-sun");
-    } else {
-      label.textContent = "Escuro";
-      if(iconUse) iconUse.setAttribute("href", "#i-moon");
-    }
-  }
-
-  document.getElementById("themeBtn")?.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme") || "light";
-    const next = current === "dark" ? "light" : "dark";
-
-    if(next === "light"){
-      document.documentElement.removeAttribute("data-theme");
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
-
-    localStorage.setItem("rf_theme", next);
-    updateThemeIconLabel();
-  });
 
   // ===== Copiar e-mail
   function wireCopy(btnId){
@@ -3035,6 +3143,7 @@
   document.getElementById("incidentType").value = "internet";
   document.getElementById("incidentImpact").value = "high";
   document.getElementById("incidentUsers").value = "many";
+  document.getElementById("analyzeIncidentBtn")?.click();
 });
 
 // ===== MODAL
