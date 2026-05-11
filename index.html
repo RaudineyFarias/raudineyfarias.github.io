@@ -539,7 +539,17 @@
     background:color-mix(in srgb, var(--card) 78%, transparent);
     white-space:nowrap;
   }
+.badge-link{
+  text-decoration:none;
+  cursor:pointer;
+  transition:.25s ease;
+}
 
+.badge-link:hover{
+  transform:translateY(-1px);
+  border-color:color-mix(in srgb, var(--accent) 45%, var(--line));
+  box-shadow:0 6px 18px rgba(91,140,255,.12);
+}
   .item strong{
     display:block;
     margin-bottom:2px;
@@ -1719,7 +1729,9 @@
           <h2>Projetos em destaque</h2>
           <p>Soluções reais desenvolvidas com foco em suporte corporativo, SaaS, automação, gestão operacional e arquitetura web.</p>
           </div>
-          <span class="badge">Sistemas Reais</span>
+          <a href="https://raudineyfarias.github.io/raudiney.projetos/index.html" class="badge badge-link">
+                <strong> Acessar Detalhes </strong>
+          </a>
         </div>
         <div class="grid"> 
 
